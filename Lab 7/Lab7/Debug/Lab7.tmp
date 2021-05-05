@@ -1,0 +1,38 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega128"</DEVICE>
+ <WORKING_DIR>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 7\CODE\Lab7\Lab7\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>D:/Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc</DIR>
+  <DIR>D:\Atmel\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 7\CODE\Lab7\Lab7\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>D:/Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m128def.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 7\CODE\Lab7\Lab7\Debug\Lab7.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>Lab7.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>Lab7.map</FILE>
+  <FILE>Lab7.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <INIT><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 7\CODE\Lab7\Lab7\main.asm</FILE><LINE>68</LINE></INIT>
+  <DEC_SPD><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 7\CODE\Lab7\Lab7\main.asm</FILE><LINE>166</LINE></DEC_SPD>
+  <INC_SPD><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 7\CODE\Lab7\Lab7\main.asm</FILE><LINE>135</LINE></INC_SPD>
+  <Z_SPD><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 7\CODE\Lab7\Lab7\main.asm</FILE><LINE>223</LINE></Z_SPD>
+  <TOP_SPD><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 7\CODE\Lab7\Lab7\main.asm</FILE><LINE>197</LINE></TOP_SPD>
+  <MAIN><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 7\CODE\Lab7\Lab7\main.asm</FILE><LINE>121</LINE></MAIN>
+  <Wait2><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 7\CODE\Lab7\Lab7\main.asm</FILE><LINE>252</LINE></Wait2>
+  <Skip_sub><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 7\CODE\Lab7\Lab7\main.asm</FILE><LINE>154</LINE></Skip_sub>
+  <Skip_add><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 7\CODE\Lab7\Lab7\main.asm</FILE><LINE>185</LINE></Skip_add>
+  <Loop><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 7\CODE\Lab7\Lab7\main.asm</FILE><LINE>259</LINE></Loop>
+  <OLoop><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 7\CODE\Lab7\Lab7\main.asm</FILE><LINE>260</LINE></OLoop>
+  <ILoop><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 7\CODE\Lab7\Lab7\main.asm</FILE><LINE>261</LINE></ILoop>
+ </LABELS>
+</ASSEMBLER_INFO>

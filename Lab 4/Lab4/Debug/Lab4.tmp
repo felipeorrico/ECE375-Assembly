@@ -1,0 +1,76 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega128"</DEVICE>
+ <WORKING_DIR>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>D:/Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc</DIR>
+  <DIR>D:\Atmel\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\Caden_Verzino_Felipe_OrricoScognamiglio_Lab4_Sourcecode.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>D:/Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m128def.inc</FILE>
+  <FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\LCDDriver.asm</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\Debug\Lab4.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>Lab4.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>Lab4.map</FILE>
+  <FILE>Lab4.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <INIT><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\Caden_Verzino_Felipe_OrricoScognamiglio_Lab4_Sourcecode.asm</FILE><LINE>42</LINE></INIT>
+  <LCDInit><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\LCDDriver.asm</FILE><LINE>75</LINE></LCDInit>
+  <LCDClr><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\LCDDriver.asm</FILE><LINE>230</LINE></LCDClr>
+  <MAIN><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\Caden_Verzino_Felipe_OrricoScognamiglio_Lab4_Sourcecode.asm</FILE><LINE>67</LINE></MAIN>
+  <S2><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\Caden_Verzino_Felipe_OrricoScognamiglio_Lab4_Sourcecode.asm</FILE><LINE>75</LINE></S2>
+  <Print1><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\Caden_Verzino_Felipe_OrricoScognamiglio_Lab4_Sourcecode.asm</FILE><LINE>96</LINE></Print1>
+  <S8><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\Caden_Verzino_Felipe_OrricoScognamiglio_Lab4_Sourcecode.asm</FILE><LINE>79</LINE></S8>
+  <Print2><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\Caden_Verzino_Felipe_OrricoScognamiglio_Lab4_Sourcecode.asm</FILE><LINE>141</LINE></Print2>
+  <STRING1_BEG><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\Caden_Verzino_Felipe_OrricoScognamiglio_Lab4_Sourcecode.asm</FILE><LINE>185</LINE></STRING1_BEG>
+  <Loop><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\Caden_Verzino_Felipe_OrricoScognamiglio_Lab4_Sourcecode.asm</FILE><LINE>105</LINE></Loop>
+  <STRING1_END><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\Caden_Verzino_Felipe_OrricoScognamiglio_Lab4_Sourcecode.asm</FILE><LINE>187</LINE></STRING1_END>
+  <END><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\Caden_Verzino_Felipe_OrricoScognamiglio_Lab4_Sourcecode.asm</FILE><LINE>113</LINE></END>
+  <LCDWrLn1><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\LCDDriver.asm</FILE><LINE>180</LINE></LCDWrLn1>
+  <STRING2_BEG><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\Caden_Verzino_Felipe_OrricoScognamiglio_Lab4_Sourcecode.asm</FILE><LINE>188</LINE></STRING2_BEG>
+  <Loop2><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\Caden_Verzino_Felipe_OrricoScognamiglio_Lab4_Sourcecode.asm</FILE><LINE>124</LINE></Loop2>
+  <STRING2_END><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\Caden_Verzino_Felipe_OrricoScognamiglio_Lab4_Sourcecode.asm</FILE><LINE>190</LINE></STRING2_END>
+  <END2><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\Caden_Verzino_Felipe_OrricoScognamiglio_Lab4_Sourcecode.asm</FILE><LINE>132</LINE></END2>
+  <LCDWrLn2><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\LCDDriver.asm</FILE><LINE>205</LINE></LCDWrLn2>
+  <Loop3><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\Caden_Verzino_Felipe_OrricoScognamiglio_Lab4_Sourcecode.asm</FILE><LINE>150</LINE></Loop3>
+  <END3><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\Caden_Verzino_Felipe_OrricoScognamiglio_Lab4_Sourcecode.asm</FILE><LINE>158</LINE></END3>
+  <Loop4><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\Caden_Verzino_Felipe_OrricoScognamiglio_Lab4_Sourcecode.asm</FILE><LINE>169</LINE></Loop4>
+  <END4><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\Caden_Verzino_Felipe_OrricoScognamiglio_Lab4_Sourcecode.asm</FILE><LINE>177</LINE></END4>
+  <LCDINIT_L1><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\LCDDriver.asm</FILE><LINE>139</LINE></LCDINIT_L1>
+  <LCDWait><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\LCDDriver.asm</FILE><LINE>492</LINE></LCDWait>
+  <LCDWriteCmd><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\LCDDriver.asm</FILE><LINE>436</LINE></LCDWriteCmd>
+  <LCDWrite><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\LCDDriver.asm</FILE><LINE>170</LINE></LCDWrite>
+  <LCDSetLine><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\LCDDriver.asm</FILE><LINE>388</LINE></LCDSetLine>
+  <LCDWriteLine><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\LCDDriver.asm</FILE><LINE>423</LINE></LCDWriteLine>
+  <LCDClrLn1><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\LCDDriver.asm</FILE><LINE>240</LINE></LCDClrLn1>
+  <LCDClrLn2><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\LCDDriver.asm</FILE><LINE>265</LINE></LCDClrLn2>
+  <LCDClrLine><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\LCDDriver.asm</FILE><LINE>404</LINE></LCDClrLine>
+  <LCDWriteByte><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\LCDDriver.asm</FILE><LINE>302</LINE></LCDWriteByte>
+  <LCDWriteByte_3><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\LCDDriver.asm</FILE><LINE>323</LINE></LCDWriteByte_3>
+  <LCDWriteByte_1><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\LCDDriver.asm</FILE><LINE>313</LINE></LCDWriteByte_1>
+  <LCDWriteByte_2><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\LCDDriver.asm</FILE><LINE>318</LINE></LCDWriteByte_2>
+  <LCDWriteChar><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\LCDDriver.asm</FILE><LINE>457</LINE></LCDWriteChar>
+  <Bin2ASCII><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\LCDDriver.asm</FILE><LINE>339</LINE></Bin2ASCII>
+  <B2A_1><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\LCDDriver.asm</FILE><LINE>352</LINE></B2A_1>
+  <B2A_3><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\LCDDriver.asm</FILE><LINE>360</LINE></B2A_3>
+  <B2A_2><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\LCDDriver.asm</FILE><LINE>357</LINE></B2A_2>
+  <div10><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\LCDDriver.asm</FILE><LINE>515</LINE></div10>
+  <LCDClrLine_1><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\LCDDriver.asm</FILE><LINE>407</LINE></LCDClrLine_1>
+  <LCDWriteLine_1><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\LCDDriver.asm</FILE><LINE>425</LINE></LCDWriteLine_1>
+  <LCDWriteData><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\LCDDriver.asm</FILE><LINE>472</LINE></LCDWriteData>
+  <LCDWC_L1><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\LCDDriver.asm</FILE><LINE>443</LINE></LCDWC_L1>
+  <LCDW_L1><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\LCDDriver.asm</FILE><LINE>493</LINE></LCDW_L1>
+  <LCDW_L2><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\LCDDriver.asm</FILE><LINE>494</LINE></LCDW_L2>
+  <div10_1><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\LCDDriver.asm</FILE><LINE>554</LINE></div10_1>
+  <div10_2><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 4\Code\Lab4\Lab4\LCDDriver.asm</FILE><LINE>560</LINE></div10_2>
+ </LABELS>
+</ASSEMBLER_INFO>
