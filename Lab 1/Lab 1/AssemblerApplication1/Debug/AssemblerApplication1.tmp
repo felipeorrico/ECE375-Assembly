@@ -1,0 +1,35 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega128"</DEVICE>
+ <WORKING_DIR>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 1\Lab 1\AssemblerApplication1\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>D:/Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc</DIR>
+  <DIR>D:\Atmel\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 1\Lab 1\AssemblerApplication1\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>D:/Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m128def.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 1\Lab 1\AssemblerApplication1\Debug\AssemblerApplication1.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>AssemblerApplication1.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>AssemblerApplication1.map</FILE>
+  <FILE>AssemblerApplication1.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <INIT><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 1\Lab 1\AssemblerApplication1\main.asm</FILE><LINE>101</LINE></INIT>
+  <MAIN><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 1\Lab 1\AssemblerApplication1\main.asm</FILE><LINE>127</LINE></MAIN>
+  <NEXT><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 1\Lab 1\AssemblerApplication1\main.asm</FILE><LINE>134</LINE></NEXT>
+  <HitRight><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 1\Lab 1\AssemblerApplication1\main.asm</FILE><LINE>148</LINE></HitRight>
+  <HitLeft><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 1\Lab 1\AssemblerApplication1\main.asm</FILE><LINE>182</LINE></HitLeft>
+  <Wait><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 1\Lab 1\AssemblerApplication1\main.asm</FILE><LINE>218</LINE></Wait>
+  <Loop><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 1\Lab 1\AssemblerApplication1\main.asm</FILE><LINE>223</LINE></Loop>
+  <OLoop><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 1\Lab 1\AssemblerApplication1\main.asm</FILE><LINE>224</LINE></OLoop>
+  <ILoop><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Labs\Lab 1\Lab 1\AssemblerApplication1\main.asm</FILE><LINE>225</LINE></ILoop>
+ </LABELS>
+</ASSEMBLER_INFO>
