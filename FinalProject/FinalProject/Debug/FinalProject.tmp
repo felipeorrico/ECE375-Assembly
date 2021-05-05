@@ -1,0 +1,117 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega128"</DEVICE>
+ <WORKING_DIR>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>D:/Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc</DIR>
+  <DIR>D:\Atmel\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>D:/Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m128def.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\Debug\FinalProject.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>FinalProject.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>FinalProject.map</FILE>
+  <FILE>FinalProject.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <COMPARE_RADIUS><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>26</LINE></COMPARE_RADIUS>
+  <COMPARE_GM><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>27</LINE></COMPARE_GM>
+  <COMPARE_PERIOD><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>28</LINE></COMPARE_PERIOD>
+  <COMPARE_V><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>29</LINE></COMPARE_V>
+  <PlanetGM><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>31</LINE></PlanetGM>
+  <Radius><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>33</LINE></Radius>
+  <DIV32_OP1><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>41</LINE></DIV32_OP1>
+  <DIV32_OP2><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>43</LINE></DIV32_OP2>
+  <DIV32_Result><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>45</LINE></DIV32_Result>
+  <DIV32_Rem><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>47</LINE></DIV32_Rem>
+  <SQRT_32_CNT><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>50</LINE></SQRT_32_CNT>
+  <SQRT_32_VAL><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>53</LINE></SQRT_32_VAL>
+  <MUL24_OP1><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>56</LINE></MUL24_OP1>
+  <MUL24_OP2><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>58</LINE></MUL24_OP2>
+  <MUL24_Result><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>61</LINE></MUL24_Result>
+  <MUL32_OP1><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>65</LINE></MUL32_OP1>
+  <MUL32_OP2><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>67</LINE></MUL32_OP2>
+  <MUL32_Result><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>71</LINE></MUL32_Result>
+  <MUL16_OP1><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>75</LINE></MUL16_OP1>
+  <MUL16_OP2><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>77</LINE></MUL16_OP2>
+  <MUL16_Result><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>81</LINE></MUL16_Result>
+  <DIV64_OP1><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>85</LINE></DIV64_OP1>
+  <DIV64_OP2><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>87</LINE></DIV64_OP2>
+  <DIV64_Result><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>91</LINE></DIV64_Result>
+  <DIV64_Rem><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>95</LINE></DIV64_Rem>
+  <SQRT_64_CNT><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>98</LINE></SQRT_64_CNT>
+  <SQRT_64_VAL><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>101</LINE></SQRT_64_VAL>
+  <INIT><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>123</LINE></INIT>
+  <MINGM><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1808</LINE></MINGM>
+  <MINRAD><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1809</LINE></MINRAD>
+  <MINPER><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1810</LINE></MINPER>
+  <MAIN><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>174</LINE></MAIN>
+  <SelectedPlanet><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1836</LINE></SelectedPlanet>
+  <PlanetInfo><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1844</LINE></PlanetInfo>
+  <planet_selector_loop_BEG><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>190</LINE></planet_selector_loop_BEG>
+  <planet_selector_loop_END><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>196</LINE></planet_selector_loop_END>
+  <OrbitalRadius><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1831</LINE></OrbitalRadius>
+  <COMPARE_16><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>915</LINE></COMPARE_16>
+  <main_continue><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>243</LINE></main_continue>
+  <Velocity><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1865</LINE></Velocity>
+  <Grading><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1819</LINE></Grading>
+  <COMPARE_32><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>839</LINE></COMPARE_32>
+  <main_continue2><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>268</LINE></main_continue2>
+  <Period><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1869</LINE></Period>
+  <DIV32><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>572</LINE></DIV32>
+  <Quotient><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1863</LINE></Quotient>
+  <sqrt_32><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>945</LINE></sqrt_32>
+  <main_velocity_not_0><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>356</LINE></main_velocity_not_0>
+  <MUL16><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1551</LINE></MUL16>
+  <MUL32><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1460</LINE></MUL32>
+  <Product><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1868</LINE></Product>
+  <DIV64><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1154</LINE></DIV64>
+  <sqrt_64><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1681</LINE></sqrt_64>
+  <COMPARE_24><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>879</LINE></COMPARE_24>
+  <P_greater_25><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>552</LINE></P_greater_25>
+  <restart_32><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>630</LINE></restart_32>
+  <LOOP32><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>641</LINE></LOOP32>
+  <DONE32><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>684</LINE></DONE32>
+  <SKIP32><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>679</LINE></SKIP32>
+  <get_div32_remainder><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>741</LINE></get_div32_remainder>
+  <return_32><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>783</LINE></return_32>
+  <clear_ops_32><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>810</LINE></clear_ops_32>
+  <sqrt_32_BEG><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>955</LINE></sqrt_32_BEG>
+  <INC_24_sqrt_32><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1034</LINE></INC_24_sqrt_32>
+  <MUL24><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1064</LINE></MUL24>
+  <sqrt_32_END><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1023</LINE></sqrt_32_END>
+  <MUL24_OLOOP><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1092</LINE></MUL24_OLOOP>
+  <MUL24_ILOOP><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1099</LINE></MUL24_ILOOP>
+  <restart_64><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1233</LINE></restart_64>
+  <LOOP_64><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1244</LINE></LOOP_64>
+  <DONE_64><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1290</LINE></DONE_64>
+  <SKIP_64><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1288</LINE></SKIP_64>
+  <COMPARE_64><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1629</LINE></COMPARE_64>
+  <get_div64_remainder><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1369</LINE></get_div64_remainder>
+  <return_64><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1423</LINE></return_64>
+  <MUL32_OLOOP><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1489</LINE></MUL32_OLOOP>
+  <MUL32_ILOOP><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1496</LINE></MUL32_ILOOP>
+  <MUL16_OLOOP><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1578</LINE></MUL16_OLOOP>
+  <MUL16_ILOOP><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1585</LINE></MUL16_ILOOP>
+  <sqrt_64_BEG><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1699</LINE></sqrt_64_BEG>
+  <INC_24_sqrt_64><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1779</LINE></INC_24_sqrt_64>
+  <sqrt_64_END><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1768</LINE></sqrt_64_END>
+  <MercuryGM><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1845</LINE></MercuryGM>
+  <VenusGM><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1846</LINE></VenusGM>
+  <EarthGM><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1847</LINE></EarthGM>
+  <MarsGM><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1848</LINE></MarsGM>
+  <JupiterGM><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1849</LINE></JupiterGM>
+  <SaturnGM><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1850</LINE></SaturnGM>
+  <UranusGM><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1851</LINE></UranusGM>
+  <NeptuneGM><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1852</LINE></NeptuneGM>
+  <FinalGM><FILE>G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm</FILE><LINE>1853</LINE></FinalGM>
+ </LABELS>
+</ASSEMBLER_INFO>

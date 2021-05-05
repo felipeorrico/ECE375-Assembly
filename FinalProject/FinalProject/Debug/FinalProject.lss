@@ -1,0 +1,3210 @@
+
+AVRASM ver. 2.2.8  G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm Mon Mar 15 17:31:17 2021
+
+[builtin](2): Including file 'D:/Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m128def.inc'
+G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm(5): Including file 'D:/Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m128def.inc'
+[builtin](2): Including file 'D:/Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m128def.inc'
+G:\My Drive\Classes\4th Year\Winter 2021\Assembly - ECE375\Final Project\FinalProject\FinalProject\FinalProject\main.asm(5): Including file 'D:/Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m128def.inc'
+                                 
+                                 ;***********************************************************
+                                 
+                                 ;***** Created: 2011-02-09 12:03 ******* Source: ATmega128.xml ***********
+                                 ;*************************************************************************
+                                 ;* A P P L I C A T I O N   N O T E   F O R   T H E   A V R   F A M I L Y
+                                 ;* 
+                                 ;* Number            : AVR000
+                                 ;* File Name         : "m128def.inc"
+                                 ;* Title             : Register/Bit Definitions for the ATmega128
+                                 ;* Date              : 2011-02-09
+                                 ;* Version           : 2.35
+                                 ;* Support E-mail    : avr@atmel.com
+                                 ;* Target MCU        : ATmega128
+                                 ;* 
+                                 ;* DESCRIPTION
+                                 ;* When including this file in the assembly program file, all I/O register 
+                                 ;* names and I/O register bit names appearing in the data book can be used.
+                                 ;* In addition, the six registers forming the three data pointers X, Y and 
+                                 ;* Z have been assigned names XL - ZH. Highest RAM address for Internal 
+                                 ;* SRAM is also defined 
+                                 ;* 
+                                 ;* The Register names are represented by their hexadecimal address.
+                                 ;* 
+                                 ;* The Register Bit names are represented by their bit number (0-7).
+                                 ;* 
+                                 ;* Please observe the difference in using the bit names with instructions
+                                 ;* such as "sbr"/"cbr" (set/clear bit in register) and "sbrs"/"sbrc"
+                                 ;* (skip if bit in register set/cleared). The following example illustrates
+                                 ;* this:
+                                 ;* 
+                                 ;* in    r16,PORTB             ;read PORTB latch
+                                 ;* sbr   r16,(1<<PB6)+(1<<PB5) ;set PB6 and PB5 (use masks, not bit#)
+                                 ;* out   PORTB,r16             ;output to PORTB
+                                 ;* 
+                                 ;* in    r16,TIFR              ;read the Timer Interrupt Flag Register
+                                 ;* sbrc  r16,TOV0              ;test the overflow flag (use bit#)
+                                 ;* rjmp  TOV0_is_set           ;jump if set
+                                 ;* ...                         ;otherwise do something else
+                                 ;*************************************************************************
+                                 
+                                 #ifndef _M128DEF_INC_
+                                 #define _M128DEF_INC_
+                                 
+                                 
+                                 #pragma partinc 0
+                                 
+                                 ; ***** SPECIFY DEVICE ***************************************************
+                                 .device ATmega128
+                                 #pragma AVRPART ADMIN PART_NAME ATmega128
+                                 .equ	SIGNATURE_000	= 0x1e
+                                 .equ	SIGNATURE_001	= 0x97
+                                 .equ	SIGNATURE_002	= 0x02
+                                 
+                                 #pragma AVRPART CORE CORE_VERSION V2E
+                                 
+                                 
+                                 ; ***** I/O REGISTER DEFINITIONS *****************************************
+                                 ; NOTE:
+                                 ; Definitions marked "MEMORY MAPPED"are extended I/O ports
+                                 ; and cannot be used with IN/OUT instructions
+                                 .equ	UCSR1C	= 0x9d	; MEMORY MAPPED
+                                 .equ	UDR1	= 0x9c	; MEMORY MAPPED
+                                 .equ	UCSR1A	= 0x9b	; MEMORY MAPPED
+                                 .equ	UCSR1B	= 0x9a	; MEMORY MAPPED
+                                 .equ	UBRR1H	= 0x98	; MEMORY MAPPED
+                                 .equ	UBRR1L	= 0x99	; MEMORY MAPPED
+                                 .equ	UCSR0C	= 0x95	; MEMORY MAPPED
+                                 .equ	UBRR0H	= 0x90	; MEMORY MAPPED
+                                 .equ	TCCR3C	= 0x8c	; MEMORY MAPPED
+                                 .equ	TCCR3A	= 0x8b	; MEMORY MAPPED
+                                 .equ	TCCR3B	= 0x8a	; MEMORY MAPPED
+                                 .equ	TCNT3L	= 0x88	; MEMORY MAPPED
+                                 .equ	TCNT3H	= 0x89	; MEMORY MAPPED
+                                 .equ	OCR3AL	= 0x86	; MEMORY MAPPED
+                                 .equ	OCR3AH	= 0x87	; MEMORY MAPPED
+                                 .equ	OCR3BL	= 0x84	; MEMORY MAPPED
+                                 .equ	OCR3BH	= 0x85	; MEMORY MAPPED
+                                 .equ	OCR3CL	= 0x82	; MEMORY MAPPED
+                                 .equ	OCR3CH	= 0x83	; MEMORY MAPPED
+                                 .equ	ICR3L	= 0x80	; MEMORY MAPPED
+                                 .equ	ICR3H	= 0x81	; MEMORY MAPPED
+                                 .equ	ETIMSK	= 0x7d	; MEMORY MAPPED
+                                 .equ	ETIFR	= 0x7c	; MEMORY MAPPED
+                                 .equ	TCCR1C	= 0x7a	; MEMORY MAPPED
+                                 .equ	OCR1CL	= 0x78	; MEMORY MAPPED
+                                 .equ	OCR1CH	= 0x79	; MEMORY MAPPED
+                                 .equ	TWCR	= 0x74	; MEMORY MAPPED
+                                 .equ	TWDR	= 0x73	; MEMORY MAPPED
+                                 .equ	TWAR	= 0x72	; MEMORY MAPPED
+                                 .equ	TWSR	= 0x71	; MEMORY MAPPED
+                                 .equ	TWBR	= 0x70	; MEMORY MAPPED
+                                 .equ	OSCCAL	= 0x6f	; MEMORY MAPPED
+                                 .equ	XMCRA	= 0x6d	; MEMORY MAPPED
+                                 .equ	XMCRB	= 0x6c	; MEMORY MAPPED
+                                 .equ	EICRA	= 0x6a	; MEMORY MAPPED
+                                 .equ	SPMCSR	= 0x68	; MEMORY MAPPED
+                                 .equ	PORTG	= 0x65	; MEMORY MAPPED
+                                 .equ	DDRG	= 0x64	; MEMORY MAPPED
+                                 .equ	PING	= 0x63	; MEMORY MAPPED
+                                 .equ	PORTF	= 0x62	; MEMORY MAPPED
+                                 .equ	DDRF	= 0x61	; MEMORY MAPPED
+                                 .equ	SREG	= 0x3f
+                                 .equ	SPL	= 0x3d
+                                 .equ	SPH	= 0x3e
+                                 .equ	XDIV	= 0x3c
+                                 .equ	RAMPZ	= 0x3b
+                                 .equ	EICRB	= 0x3a
+                                 .equ	EIMSK	= 0x39
+                                 .equ	EIFR	= 0x38
+                                 .equ	TIMSK	= 0x37
+                                 .equ	TIFR	= 0x36
+                                 .equ	MCUCR	= 0x35
+                                 .equ	MCUCSR	= 0x34
+                                 .equ	TCCR0	= 0x33
+                                 .equ	TCNT0	= 0x32
+                                 .equ	OCR0	= 0x31
+                                 .equ	ASSR	= 0x30
+                                 .equ	TCCR1A	= 0x2f
+                                 .equ	TCCR1B	= 0x2e
+                                 .equ	TCNT1L	= 0x2c
+                                 .equ	TCNT1H	= 0x2d
+                                 .equ	OCR1AL	= 0x2a
+                                 .equ	OCR1AH	= 0x2b
+                                 .equ	OCR1BL	= 0x28
+                                 .equ	OCR1BH	= 0x29
+                                 .equ	ICR1L	= 0x26
+                                 .equ	ICR1H	= 0x27
+                                 .equ	TCCR2	= 0x25
+                                 .equ	TCNT2	= 0x24
+                                 .equ	OCR2	= 0x23
+                                 .equ	OCDR	= 0x22
+                                 .equ	WDTCR	= 0x21
+                                 .equ	SFIOR	= 0x20
+                                 .equ	EEARL	= 0x1e
+                                 .equ	EEARH	= 0x1f
+                                 .equ	EEDR	= 0x1d
+                                 .equ	EECR	= 0x1c
+                                 .equ	PORTA	= 0x1b
+                                 .equ	DDRA	= 0x1a
+                                 .equ	PINA	= 0x19
+                                 .equ	PORTB	= 0x18
+                                 .equ	DDRB	= 0x17
+                                 .equ	PINB	= 0x16
+                                 .equ	PORTC	= 0x15
+                                 .equ	DDRC	= 0x14
+                                 .equ	PINC	= 0x13
+                                 .equ	PORTD	= 0x12
+                                 .equ	DDRD	= 0x11
+                                 .equ	PIND	= 0x10
+                                 .equ	SPDR	= 0x0f
+                                 .equ	SPSR	= 0x0e
+                                 .equ	SPCR	= 0x0d
+                                 .equ	UDR0	= 0x0c
+                                 .equ	UCSR0A	= 0x0b
+                                 .equ	UCSR0B	= 0x0a
+                                 .equ	UBRR0L	= 0x09
+                                 .equ	ACSR	= 0x08
+                                 .equ	ADMUX	= 0x07
+                                 .equ	ADCSRA	= 0x06
+                                 .equ	ADCH	= 0x05
+                                 .equ	ADCL	= 0x04
+                                 .equ	PORTE	= 0x03
+                                 .equ	DDRE	= 0x02
+                                 .equ	PINE	= 0x01
+                                 .equ	PINF	= 0x00
+                                 
+                                 
+                                 ; ***** BIT DEFINITIONS **************************************************
+                                 
+                                 ; ***** ANALOG_COMPARATOR ************
+                                 ; SFIOR - Special Function IO Register
+                                 .equ	ACME	= 3	; Analog Comparator Multiplexer Enable
+                                 
+                                 ; ACSR - Analog Comparator Control And Status Register
+                                 .equ	ACIS0	= 0	; Analog Comparator Interrupt Mode Select bit 0
+                                 .equ	ACIS1	= 1	; Analog Comparator Interrupt Mode Select bit 1
+                                 .equ	ACIC	= 2	; Analog Comparator Input Capture Enable
+                                 .equ	ACIE	= 3	; Analog Comparator Interrupt Enable
+                                 .equ	ACI	= 4	; Analog Comparator Interrupt Flag
+                                 .equ	ACO	= 5	; Analog Compare Output
+                                 .equ	ACBG	= 6	; Analog Comparator Bandgap Select
+                                 .equ	ACD	= 7	; Analog Comparator Disable
+                                 
+                                 
+                                 ; ***** SPI **************************
+                                 ; SPDR - SPI Data Register
+                                 .equ	SPDR0	= 0	; SPI Data Register bit 0
+                                 .equ	SPDR1	= 1	; SPI Data Register bit 1
+                                 .equ	SPDR2	= 2	; SPI Data Register bit 2
+                                 .equ	SPDR3	= 3	; SPI Data Register bit 3
+                                 .equ	SPDR4	= 4	; SPI Data Register bit 4
+                                 .equ	SPDR5	= 5	; SPI Data Register bit 5
+                                 .equ	SPDR6	= 6	; SPI Data Register bit 6
+                                 .equ	SPDR7	= 7	; SPI Data Register bit 7
+                                 
+                                 ; SPSR - SPI Status Register
+                                 .equ	SPI2X	= 0	; Double SPI Speed Bit
+                                 .equ	WCOL	= 6	; Write Collision Flag
+                                 .equ	SPIF	= 7	; SPI Interrupt Flag
+                                 
+                                 ; SPCR - SPI Control Register
+                                 .equ	SPR0	= 0	; SPI Clock Rate Select 0
+                                 .equ	SPR1	= 1	; SPI Clock Rate Select 1
+                                 .equ	CPHA	= 2	; Clock Phase
+                                 .equ	CPOL	= 3	; Clock polarity
+                                 .equ	MSTR	= 4	; Master/Slave Select
+                                 .equ	DORD	= 5	; Data Order
+                                 .equ	SPE	= 6	; SPI Enable
+                                 .equ	SPIE	= 7	; SPI Interrupt Enable
+                                 
+                                 
+                                 ; ***** TWI **************************
+                                 ; TWBR - TWI Bit Rate register
+                                 .equ	I2BR	= TWBR	; For compatibility
+                                 .equ	TWBR0	= 0	; 
+                                 .equ	TWBR1	= 1	; 
+                                 .equ	TWBR2	= 2	; 
+                                 .equ	TWBR3	= 3	; 
+                                 .equ	TWBR4	= 4	; 
+                                 .equ	TWBR5	= 5	; 
+                                 .equ	TWBR6	= 6	; 
+                                 .equ	TWBR7	= 7	; 
+                                 
+                                 ; TWCR - TWI Control Register
+                                 .equ	I2CR	= TWCR	; For compatibility
+                                 .equ	TWIE	= 0	; TWI Interrupt Enable
+                                 .equ	I2IE	= TWIE	; For compatibility
+                                 .equ	TWEN	= 2	; TWI Enable Bit
+                                 .equ	I2EN	= TWEN	; For compatibility
+                                 .equ	ENI2C	= TWEN	; For compatibility
+                                 .equ	TWWC	= 3	; TWI Write Collition Flag
+                                 .equ	I2WC	= TWWC	; For compatibility
+                                 .equ	TWSTO	= 4	; TWI Stop Condition Bit
+                                 .equ	I2STO	= TWSTO	; For compatibility
+                                 .equ	TWSTA	= 5	; TWI Start Condition Bit
+                                 .equ	I2STA	= TWSTA	; For compatibility
+                                 .equ	TWEA	= 6	; TWI Enable Acknowledge Bit
+                                 .equ	I2EA	= TWEA	; For compatibility
+                                 .equ	TWINT	= 7	; TWI Interrupt Flag
+                                 .equ	I2INT	= TWINT	; For compatibility
+                                 
+                                 ; TWSR - TWI Status Register
+                                 .equ	I2SR	= TWSR	; For compatibility
+                                 .equ	TWPS0	= 0	; TWI Prescaler
+                                 .equ	TWS0	= TWPS0	; For compatibility
+                                 .equ	I2GCE	= TWPS0	; For compatibility
+                                 .equ	TWPS1	= 1	; TWI Prescaler
+                                 .equ	TWS1	= TWPS1	; For compatibility
+                                 .equ	TWS3	= 3	; TWI Status
+                                 .equ	I2S3	= TWS3	; For compatibility
+                                 .equ	TWS4	= 4	; TWI Status
+                                 .equ	I2S4	= TWS4	; For compatibility
+                                 .equ	TWS5	= 5	; TWI Status
+                                 .equ	I2S5	= TWS5	; For compatibility
+                                 .equ	TWS6	= 6	; TWI Status
+                                 .equ	I2S6	= TWS6	; For compatibility
+                                 .equ	TWS7	= 7	; TWI Status
+                                 .equ	I2S7	= TWS7	; For compatibility
+                                 
+                                 ; TWDR - TWI Data register
+                                 .equ	I2DR	= TWDR	; For compatibility
+                                 .equ	TWD0	= 0	; TWI Data Register Bit 0
+                                 .equ	TWD1	= 1	; TWI Data Register Bit 1
+                                 .equ	TWD2	= 2	; TWI Data Register Bit 2
+                                 .equ	TWD3	= 3	; TWI Data Register Bit 3
+                                 .equ	TWD4	= 4	; TWI Data Register Bit 4
+                                 .equ	TWD5	= 5	; TWI Data Register Bit 5
+                                 .equ	TWD6	= 6	; TWI Data Register Bit 6
+                                 .equ	TWD7	= 7	; TWI Data Register Bit 7
+                                 
+                                 ; TWAR - TWI (Slave) Address register
+                                 .equ	I2AR	= TWAR	; For compatibility
+                                 .equ	TWGCE	= 0	; TWI General Call Recognition Enable Bit
+                                 .equ	TWA0	= 1	; TWI (Slave) Address register Bit 0
+                                 .equ	TWA1	= 2	; TWI (Slave) Address register Bit 1
+                                 .equ	TWA2	= 3	; TWI (Slave) Address register Bit 2
+                                 .equ	TWA3	= 4	; TWI (Slave) Address register Bit 3
+                                 .equ	TWA4	= 5	; TWI (Slave) Address register Bit 4
+                                 .equ	TWA5	= 6	; TWI (Slave) Address register Bit 5
+                                 .equ	TWA6	= 7	; TWI (Slave) Address register Bit 6
+                                 
+                                 
+                                 ; ***** USART0 ***********************
+                                 ; UDR0 - USART I/O Data Register
+                                 .equ	UDR00	= 0	; USART I/O Data Register bit 0
+                                 .equ	UDR01	= 1	; USART I/O Data Register bit 1
+                                 .equ	UDR02	= 2	; USART I/O Data Register bit 2
+                                 .equ	UDR03	= 3	; USART I/O Data Register bit 3
+                                 .equ	UDR04	= 4	; USART I/O Data Register bit 4
+                                 .equ	UDR05	= 5	; USART I/O Data Register bit 5
+                                 .equ	UDR06	= 6	; USART I/O Data Register bit 6
+                                 .equ	UDR07	= 7	; USART I/O Data Register bit 7
+                                 
+                                 ; UCSR0A - USART Control and Status Register A
+                                 .equ	MPCM0	= 0	; Multi-processor Communication Mode
+                                 .equ	U2X0	= 1	; Double the USART transmission speed
+                                 .equ	UPE0	= 2	; Parity Error
+                                 .equ	DOR0	= 3	; Data overRun
+                                 .equ	FE0	= 4	; Framing Error
+                                 .equ	UDRE0	= 5	; USART Data Register Empty
+                                 .equ	TXC0	= 6	; USART Transmitt Complete
+                                 .equ	RXC0	= 7	; USART Receive Complete
+                                 
+                                 ; UCSR0B - USART Control and Status Register B
+                                 .equ	TXB80	= 0	; Transmit Data Bit 8
+                                 .equ	RXB80	= 1	; Receive Data Bit 8
+                                 .equ	UCSZ02	= 2	; Character Size
+                                 .equ	UCSZ2	= UCSZ02	; For compatibility
+                                 .equ	TXEN0	= 3	; Transmitter Enable
+                                 .equ	RXEN0	= 4	; Receiver Enable
+                                 .equ	UDRIE0	= 5	; USART Data register Empty Interrupt Enable
+                                 .equ	TXCIE0	= 6	; TX Complete Interrupt Enable
+                                 .equ	RXCIE0	= 7	; RX Complete Interrupt Enable
+                                 
+                                 ; UCSR0C - USART Control and Status Register C
+                                 .equ	UCPOL0	= 0	; Clock Polarity
+                                 .equ	UCSZ00	= 1	; Character Size
+                                 .equ	UCSZ01	= 2	; Character Size
+                                 .equ	USBS0	= 3	; Stop Bit Select
+                                 .equ	UPM00	= 4	; Parity Mode Bit 0
+                                 .equ	UPM01	= 5	; Parity Mode Bit 1
+                                 .equ	UMSEL0	= 6	; USART Mode Select
+                                 
+                                 ; UBRR0H - USART Baud Rate Register Hight Byte
+                                 .equ	UBRR8	= 0	; USART Baud Rate Register bit 8
+                                 .equ	UBRR9	= 1	; USART Baud Rate Register bit 9
+                                 .equ	UBRR10	= 2	; USART Baud Rate Register bit 10
+                                 .equ	UBRR11	= 3	; USART Baud Rate Register bit 11
+                                 
+                                 ; UBRR0L - USART Baud Rate Register Low Byte
+                                 .equ	UBRR0	= 0	; USART Baud Rate Register bit 0
+                                 .equ	UBRR1	= 1	; USART Baud Rate Register bit 1
+                                 .equ	UBRR2	= 2	; USART Baud Rate Register bit 2
+                                 .equ	UBRR3	= 3	; USART Baud Rate Register bit 3
+                                 .equ	UBRR4	= 4	; USART Baud Rate Register bit 4
+                                 .equ	UBRR5	= 5	; USART Baud Rate Register bit 5
+                                 .equ	UBRR6	= 6	; USART Baud Rate Register bit 6
+                                 .equ	UBRR7	= 7	; USART Baud Rate Register bit 7
+                                 
+                                 
+                                 ; ***** USART1 ***********************
+                                 ; UDR1 - USART I/O Data Register
+                                 .equ	UDR10	= 0	; USART I/O Data Register bit 0
+                                 .equ	UDR11	= 1	; USART I/O Data Register bit 1
+                                 .equ	UDR12	= 2	; USART I/O Data Register bit 2
+                                 .equ	UDR13	= 3	; USART I/O Data Register bit 3
+                                 .equ	UDR14	= 4	; USART I/O Data Register bit 4
+                                 .equ	UDR15	= 5	; USART I/O Data Register bit 5
+                                 .equ	UDR16	= 6	; USART I/O Data Register bit 6
+                                 .equ	UDR17	= 7	; USART I/O Data Register bit 7
+                                 
+                                 ; UCSR1A - USART Control and Status Register A
+                                 .equ	MPCM1	= 0	; Multi-processor Communication Mode
+                                 .equ	U2X1	= 1	; Double the USART transmission speed
+                                 .equ	UPE1	= 2	; Parity Error
+                                 .equ	DOR1	= 3	; Data overRun
+                                 .equ	FE1	= 4	; Framing Error
+                                 .equ	UDRE1	= 5	; USART Data Register Empty
+                                 .equ	TXC1	= 6	; USART Transmitt Complete
+                                 .equ	RXC1	= 7	; USART Receive Complete
+                                 
+                                 ; UCSR1B - USART Control and Status Register B
+                                 .equ	TXB81	= 0	; Transmit Data Bit 8
+                                 .equ	RXB81	= 1	; Receive Data Bit 8
+                                 .equ	UCSZ12	= 2	; Character Size
+                                 .equ	TXEN1	= 3	; Transmitter Enable
+                                 .equ	RXEN1	= 4	; Receiver Enable
+                                 .equ	UDRIE1	= 5	; USART Data register Empty Interrupt Enable
+                                 .equ	TXCIE1	= 6	; TX Complete Interrupt Enable
+                                 .equ	RXCIE1	= 7	; RX Complete Interrupt Enable
+                                 
+                                 ; UCSR1C - USART Control and Status Register C
+                                 .equ	UCPOL1	= 0	; Clock Polarity
+                                 .equ	UCSZ10	= 1	; Character Size
+                                 .equ	UCSZ11	= 2	; Character Size
+                                 .equ	USBS1	= 3	; Stop Bit Select
+                                 .equ	UPM10	= 4	; Parity Mode Bit 0
+                                 .equ	UPM11	= 5	; Parity Mode Bit 1
+                                 .equ	UMSEL1	= 6	; USART Mode Select
+                                 
+                                 ; UBRR1H - USART Baud Rate Register Hight Byte
+                                 ;.equ	UBRR8	= 0	; USART Baud Rate Register bit 8
+                                 ;.equ	UBRR9	= 1	; USART Baud Rate Register bit 9
+                                 ;.equ	UBRR10	= 2	; USART Baud Rate Register bit 10
+                                 ;.equ	UBRR11	= 3	; USART Baud Rate Register bit 11
+                                 
+                                 ; UBRR1L - USART Baud Rate Register Low Byte
+                                 ;.equ	UBRR0	= 0	; USART Baud Rate Register bit 0
+                                 ;.equ	UBRR1	= 1	; USART Baud Rate Register bit 1
+                                 ;.equ	UBRR2	= 2	; USART Baud Rate Register bit 2
+                                 ;.equ	UBRR3	= 3	; USART Baud Rate Register bit 3
+                                 ;.equ	UBRR4	= 4	; USART Baud Rate Register bit 4
+                                 ;.equ	UBRR5	= 5	; USART Baud Rate Register bit 5
+                                 ;.equ	UBRR6	= 6	; USART Baud Rate Register bit 6
+                                 ;.equ	UBRR7	= 7	; USART Baud Rate Register bit 7
+                                 
+                                 
+                                 ; ***** CPU **************************
+                                 ; SREG - Status Register
+                                 .equ	SREG_C	= 0	; Carry Flag
+                                 .equ	SREG_Z	= 1	; Zero Flag
+                                 .equ	SREG_N	= 2	; Negative Flag
+                                 .equ	SREG_V	= 3	; Two's Complement Overflow Flag
+                                 .equ	SREG_S	= 4	; Sign Bit
+                                 .equ	SREG_H	= 5	; Half Carry Flag
+                                 .equ	SREG_T	= 6	; Bit Copy Storage
+                                 .equ	SREG_I	= 7	; Global Interrupt Enable
+                                 
+                                 ; MCUCR - MCU Control Register
+                                 .equ	IVCE	= 0	; Interrupt Vector Change Enable
+                                 .equ	IVSEL	= 1	; Interrupt Vector Select
+                                 .equ	SM2	= 2	; Sleep Mode Select
+                                 .equ	SM0	= 3	; Sleep Mode Select
+                                 .equ	SM1	= 4	; Sleep Mode Select
+                                 .equ	SE	= 5	; Sleep Enable
+                                 .equ	SRW10	= 6	; External SRAM Wait State Select
+                                 .equ	SRE	= 7	; External SRAM Enable
+                                 
+                                 ; XMCRA - External Memory Control Register A
+                                 .equ	SRW11	= 1	; Wait state select bit upper page
+                                 .equ	SRW00	= 2	; Wait state select bit lower page
+                                 .equ	SRW01	= 3	; Wait state select bit lower page
+                                 .equ	SRL0	= 4	; Wait state page limit
+                                 .equ	SRL1	= 5	; Wait state page limit
+                                 .equ	SRL2	= 6	; Wait state page limit
+                                 
+                                 ; XMCRB - External Memory Control Register B
+                                 .equ	XMM0	= 0	; External Memory High Mask
+                                 .equ	XMM1	= 1	; External Memory High Mask
+                                 .equ	XMM2	= 2	; External Memory High Mask
+                                 .equ	XMBK	= 7	; External Memory Bus Keeper Enable
+                                 
+                                 ; OSCCAL - Oscillator Calibration Value
+                                 .equ	CAL0	= 0	; Oscillator Calibration Value
+                                 .equ	CAL1	= 1	; Oscillator Calibration Value
+                                 .equ	CAL2	= 2	; Oscillator Calibration Value
+                                 .equ	CAL3	= 3	; Oscillator Calibration Value
+                                 .equ	CAL4	= 4	; Oscillator Calibration Value
+                                 .equ	CAL5	= 5	; Oscillator Calibration Value
+                                 .equ	CAL6	= 6	; Oscillator Calibration Value
+                                 .equ	CAL7	= 7	; Oscillator Calibration Value
+                                 
+                                 ; XDIV - XTAL Divide Control Register
+                                 .equ	XDIV0	= 0	; XTAl Divide Select Bit 0
+                                 .equ	XDIV1	= 1	; XTAl Divide Select Bit 1
+                                 .equ	XDIV2	= 2	; XTAl Divide Select Bit 2
+                                 .equ	XDIV3	= 3	; XTAl Divide Select Bit 3
+                                 .equ	XDIV4	= 4	; XTAl Divide Select Bit 4
+                                 .equ	XDIV5	= 5	; XTAl Divide Select Bit 5
+                                 .equ	XDIV6	= 6	; XTAl Divide Select Bit 6
+                                 .equ	XDIVEN	= 7	; XTAL Divide Enable
+                                 
+                                 ; MCUCSR - MCU Control And Status Register
+                                 .equ	PORF	= 0	; Power-on reset flag
+                                 .equ	EXTRF	= 1	; External Reset Flag
+                                 .equ	BORF	= 2	; Brown-out Reset Flag
+                                 .equ	WDRF	= 3	; Watchdog Reset Flag
+                                 .equ	JTRF	= 4	; JTAG Reset Flag
+                                 .equ	JTD	= 7	; JTAG Interface Disable
+                                 
+                                 ; RAMPZ - RAM Page Z Select Register
+                                 .equ	RAMPZ0	= 0	; RAM Page Z Select Register Bit 0
+                                 
+                                 
+                                 ; ***** BOOT_LOAD ********************
+                                 ; SPMCSR - Store Program Memory Control Register
+                                 .equ	SPMCR	= SPMCSR	; For compatibility
+                                 .equ	SPMEN	= 0	; Store Program Memory Enable
+                                 .equ	PGERS	= 1	; Page Erase
+                                 .equ	PGWRT	= 2	; Page Write
+                                 .equ	BLBSET	= 3	; Boot Lock Bit Set
+                                 .equ	RWWSRE	= 4	; Read While Write section read enable
+                                 .equ	ASRE	= RWWSRE	; For compatibility
+                                 .equ	RWWSB	= 6	; Read While Write Section Busy
+                                 .equ	ASB	= RWWSB	; For compatibility
+                                 .equ	SPMIE	= 7	; SPM Interrupt Enable
+                                 
+                                 
+                                 ; ***** JTAG *************************
+                                 ; OCDR - On-Chip Debug Related Register in I/O Memory
+                                 .equ	OCDR0	= 0	; On-Chip Debug Register Bit 0
+                                 .equ	OCDR1	= 1	; On-Chip Debug Register Bit 1
+                                 .equ	OCDR2	= 2	; On-Chip Debug Register Bit 2
+                                 .equ	OCDR3	= 3	; On-Chip Debug Register Bit 3
+                                 .equ	OCDR4	= 4	; On-Chip Debug Register Bit 4
+                                 .equ	OCDR5	= 5	; On-Chip Debug Register Bit 5
+                                 .equ	OCDR6	= 6	; On-Chip Debug Register Bit 6
+                                 .equ	OCDR7	= 7	; On-Chip Debug Register Bit 7
+                                 .equ	IDRD	= OCDR7	; For compatibility
+                                 
+                                 ; MCUCSR - MCU Control And Status Register
+                                 ;.equ	JTRF	= 4	; JTAG Reset Flag
+                                 ;.equ	JTD	= 7	; JTAG Interface Disable
+                                 
+                                 
+                                 ; ***** MISC *************************
+                                 ; SFIOR - Special Function IO Register
+                                 .equ	PSR321	= 0	; Prescaler Reset Timer/Counter3, Timer/Counter2, and Timer/Counter1
+                                 .equ	PSR1	= PSR321	; For compatibility
+                                 .equ	PSR2	= PSR321	; For compatibility
+                                 .equ	PSR3	= PSR321	; For compatibility
+                                 .equ	PSR0	= 1	; Prescaler Reset Timer/Counter0
+                                 .equ	PUD	= 2	; Pull Up Disable
+                                 ;.equ	ACME	= 3	; Analog Comparator Multiplexer Enable
+                                 .equ	TSM	= 7	; Timer/Counter Synchronization Mode
+                                 
+                                 
+                                 ; ***** EXTERNAL_INTERRUPT ***********
+                                 ; EICRA - External Interrupt Control Register A
+                                 .equ	ISC00	= 0	; External Interrupt Sense Control Bit
+                                 .equ	ISC01	= 1	; External Interrupt Sense Control Bit
+                                 .equ	ISC10	= 2	; External Interrupt Sense Control Bit
+                                 .equ	ISC11	= 3	; External Interrupt Sense Control Bit
+                                 .equ	ISC20	= 4	; External Interrupt Sense Control Bit
+                                 .equ	ISC21	= 5	; External Interrupt Sense Control Bit
+                                 .equ	ISC30	= 6	; External Interrupt Sense Control Bit
+                                 .equ	ISC31	= 7	; External Interrupt Sense Control Bit
+                                 
+                                 ; EICRB - External Interrupt Control Register B
+                                 .equ	ISC40	= 0	; External Interrupt 7-4 Sense Control Bit
+                                 .equ	ISC41	= 1	; External Interrupt 7-4 Sense Control Bit
+                                 .equ	ISC50	= 2	; External Interrupt 7-4 Sense Control Bit
+                                 .equ	ISC51	= 3	; External Interrupt 7-4 Sense Control Bit
+                                 .equ	ISC60	= 4	; External Interrupt 7-4 Sense Control Bit
+                                 .equ	ISC61	= 5	; External Interrupt 7-4 Sense Control Bit
+                                 .equ	ISC70	= 6	; External Interrupt 7-4 Sense Control Bit
+                                 .equ	ISC71	= 7	; External Interrupt 7-4 Sense Control Bit
+                                 
+                                 ; EIMSK - External Interrupt Mask Register
+                                 .equ	GICR	= EIMSK	; For compatibility
+                                 .equ	GIMSK	= EIMSK	; For compatibility
+                                 .equ	INT0	= 0	; External Interrupt Request 0 Enable
+                                 .equ	INT1	= 1	; External Interrupt Request 1 Enable
+                                 .equ	INT2	= 2	; External Interrupt Request 2 Enable
+                                 .equ	INT3	= 3	; External Interrupt Request 3 Enable
+                                 .equ	INT4	= 4	; External Interrupt Request 4 Enable
+                                 .equ	INT5	= 5	; External Interrupt Request 5 Enable
+                                 .equ	INT6	= 6	; External Interrupt Request 6 Enable
+                                 .equ	INT7	= 7	; External Interrupt Request 7 Enable
+                                 
+                                 ; EIFR - External Interrupt Flag Register
+                                 .equ	GIFR	= EIFR	; For compatibility
+                                 .equ	INTF0	= 0	; External Interrupt Flag 0
+                                 .equ	INTF1	= 1	; External Interrupt Flag 1
+                                 .equ	INTF2	= 2	; External Interrupt Flag 2
+                                 .equ	INTF3	= 3	; External Interrupt Flag 3
+                                 .equ	INTF4	= 4	; External Interrupt Flag 4
+                                 .equ	INTF5	= 5	; External Interrupt Flag 5
+                                 .equ	INTF6	= 6	; External Interrupt Flag 6
+                                 .equ	INTF7	= 7	; External Interrupt Flag 7
+                                 
+                                 
+                                 ; ***** EEPROM ***********************
+                                 ; EEDR - EEPROM Data Register
+                                 .equ	EEDR0	= 0	; EEPROM Data Register bit 0
+                                 .equ	EEDR1	= 1	; EEPROM Data Register bit 1
+                                 .equ	EEDR2	= 2	; EEPROM Data Register bit 2
+                                 .equ	EEDR3	= 3	; EEPROM Data Register bit 3
+                                 .equ	EEDR4	= 4	; EEPROM Data Register bit 4
+                                 .equ	EEDR5	= 5	; EEPROM Data Register bit 5
+                                 .equ	EEDR6	= 6	; EEPROM Data Register bit 6
+                                 .equ	EEDR7	= 7	; EEPROM Data Register bit 7
+                                 
+                                 ; EECR - EEPROM Control Register
+                                 .equ	EERE	= 0	; EEPROM Read Enable
+                                 .equ	EEWE	= 1	; EEPROM Write Enable
+                                 .equ	EEMWE	= 2	; EEPROM Master Write Enable
+                                 .equ	EERIE	= 3	; EEPROM Ready Interrupt Enable
+                                 
+                                 
+                                 ; ***** PORTA ************************
+                                 ; PORTA - Port A Data Register
+                                 .equ	PORTA0	= 0	; Port A Data Register bit 0
+                                 .equ	PA0	= 0	; For compatibility
+                                 .equ	PORTA1	= 1	; Port A Data Register bit 1
+                                 .equ	PA1	= 1	; For compatibility
+                                 .equ	PORTA2	= 2	; Port A Data Register bit 2
+                                 .equ	PA2	= 2	; For compatibility
+                                 .equ	PORTA3	= 3	; Port A Data Register bit 3
+                                 .equ	PA3	= 3	; For compatibility
+                                 .equ	PORTA4	= 4	; Port A Data Register bit 4
+                                 .equ	PA4	= 4	; For compatibility
+                                 .equ	PORTA5	= 5	; Port A Data Register bit 5
+                                 .equ	PA5	= 5	; For compatibility
+                                 .equ	PORTA6	= 6	; Port A Data Register bit 6
+                                 .equ	PA6	= 6	; For compatibility
+                                 .equ	PORTA7	= 7	; Port A Data Register bit 7
+                                 .equ	PA7	= 7	; For compatibility
+                                 
+                                 ; DDRA - Port A Data Direction Register
+                                 .equ	DDA0	= 0	; Data Direction Register, Port A, bit 0
+                                 .equ	DDA1	= 1	; Data Direction Register, Port A, bit 1
+                                 .equ	DDA2	= 2	; Data Direction Register, Port A, bit 2
+                                 .equ	DDA3	= 3	; Data Direction Register, Port A, bit 3
+                                 .equ	DDA4	= 4	; Data Direction Register, Port A, bit 4
+                                 .equ	DDA5	= 5	; Data Direction Register, Port A, bit 5
+                                 .equ	DDA6	= 6	; Data Direction Register, Port A, bit 6
+                                 .equ	DDA7	= 7	; Data Direction Register, Port A, bit 7
+                                 
+                                 ; PINA - Port A Input Pins
+                                 .equ	PINA0	= 0	; Input Pins, Port A bit 0
+                                 .equ	PINA1	= 1	; Input Pins, Port A bit 1
+                                 .equ	PINA2	= 2	; Input Pins, Port A bit 2
+                                 .equ	PINA3	= 3	; Input Pins, Port A bit 3
+                                 .equ	PINA4	= 4	; Input Pins, Port A bit 4
+                                 .equ	PINA5	= 5	; Input Pins, Port A bit 5
+                                 .equ	PINA6	= 6	; Input Pins, Port A bit 6
+                                 .equ	PINA7	= 7	; Input Pins, Port A bit 7
+                                 
+                                 
+                                 ; ***** PORTB ************************
+                                 ; PORTB - Port B Data Register
+                                 .equ	PORTB0	= 0	; Port B Data Register bit 0
+                                 .equ	PB0	= 0	; For compatibility
+                                 .equ	PORTB1	= 1	; Port B Data Register bit 1
+                                 .equ	PB1	= 1	; For compatibility
+                                 .equ	PORTB2	= 2	; Port B Data Register bit 2
+                                 .equ	PB2	= 2	; For compatibility
+                                 .equ	PORTB3	= 3	; Port B Data Register bit 3
+                                 .equ	PB3	= 3	; For compatibility
+                                 .equ	PORTB4	= 4	; Port B Data Register bit 4
+                                 .equ	PB4	= 4	; For compatibility
+                                 .equ	PORTB5	= 5	; Port B Data Register bit 5
+                                 .equ	PB5	= 5	; For compatibility
+                                 .equ	PORTB6	= 6	; Port B Data Register bit 6
+                                 .equ	PB6	= 6	; For compatibility
+                                 .equ	PORTB7	= 7	; Port B Data Register bit 7
+                                 .equ	PB7	= 7	; For compatibility
+                                 
+                                 ; DDRB - Port B Data Direction Register
+                                 .equ	DDB0	= 0	; Port B Data Direction Register bit 0
+                                 .equ	DDB1	= 1	; Port B Data Direction Register bit 1
+                                 .equ	DDB2	= 2	; Port B Data Direction Register bit 2
+                                 .equ	DDB3	= 3	; Port B Data Direction Register bit 3
+                                 .equ	DDB4	= 4	; Port B Data Direction Register bit 4
+                                 .equ	DDB5	= 5	; Port B Data Direction Register bit 5
+                                 .equ	DDB6	= 6	; Port B Data Direction Register bit 6
+                                 .equ	DDB7	= 7	; Port B Data Direction Register bit 7
+                                 
+                                 ; PINB - Port B Input Pins
+                                 .equ	PINB0	= 0	; Port B Input Pins bit 0
+                                 .equ	PINB1	= 1	; Port B Input Pins bit 1
+                                 .equ	PINB2	= 2	; Port B Input Pins bit 2
+                                 .equ	PINB3	= 3	; Port B Input Pins bit 3
+                                 .equ	PINB4	= 4	; Port B Input Pins bit 4
+                                 .equ	PINB5	= 5	; Port B Input Pins bit 5
+                                 .equ	PINB6	= 6	; Port B Input Pins bit 6
+                                 .equ	PINB7	= 7	; Port B Input Pins bit 7
+                                 
+                                 
+                                 ; ***** PORTC ************************
+                                 ; PORTC - Port C Data Register
+                                 .equ	PORTC0	= 0	; Port C Data Register bit 0
+                                 .equ	PC0	= 0	; For compatibility
+                                 .equ	PORTC1	= 1	; Port C Data Register bit 1
+                                 .equ	PC1	= 1	; For compatibility
+                                 .equ	PORTC2	= 2	; Port C Data Register bit 2
+                                 .equ	PC2	= 2	; For compatibility
+                                 .equ	PORTC3	= 3	; Port C Data Register bit 3
+                                 .equ	PC3	= 3	; For compatibility
+                                 .equ	PORTC4	= 4	; Port C Data Register bit 4
+                                 .equ	PC4	= 4	; For compatibility
+                                 .equ	PORTC5	= 5	; Port C Data Register bit 5
+                                 .equ	PC5	= 5	; For compatibility
+                                 .equ	PORTC6	= 6	; Port C Data Register bit 6
+                                 .equ	PC6	= 6	; For compatibility
+                                 .equ	PORTC7	= 7	; Port C Data Register bit 7
+                                 .equ	PC7	= 7	; For compatibility
+                                 
+                                 ; DDRC - Port C Data Direction Register
+                                 .equ	DDC0	= 0	; Port C Data Direction Register bit 0
+                                 .equ	DDC1	= 1	; Port C Data Direction Register bit 1
+                                 .equ	DDC2	= 2	; Port C Data Direction Register bit 2
+                                 .equ	DDC3	= 3	; Port C Data Direction Register bit 3
+                                 .equ	DDC4	= 4	; Port C Data Direction Register bit 4
+                                 .equ	DDC5	= 5	; Port C Data Direction Register bit 5
+                                 .equ	DDC6	= 6	; Port C Data Direction Register bit 6
+                                 .equ	DDC7	= 7	; Port C Data Direction Register bit 7
+                                 
+                                 ; PINC - Port C Input Pins
+                                 .equ	PINC0	= 0	; Port C Input Pins bit 0
+                                 .equ	PINC1	= 1	; Port C Input Pins bit 1
+                                 .equ	PINC2	= 2	; Port C Input Pins bit 2
+                                 .equ	PINC3	= 3	; Port C Input Pins bit 3
+                                 .equ	PINC4	= 4	; Port C Input Pins bit 4
+                                 .equ	PINC5	= 5	; Port C Input Pins bit 5
+                                 .equ	PINC6	= 6	; Port C Input Pins bit 6
+                                 .equ	PINC7	= 7	; Port C Input Pins bit 7
+                                 
+                                 
+                                 ; ***** PORTD ************************
+                                 ; PORTD - Port D Data Register
+                                 .equ	PORTD0	= 0	; Port D Data Register bit 0
+                                 .equ	PD0	= 0	; For compatibility
+                                 .equ	PORTD1	= 1	; Port D Data Register bit 1
+                                 .equ	PD1	= 1	; For compatibility
+                                 .equ	PORTD2	= 2	; Port D Data Register bit 2
+                                 .equ	PD2	= 2	; For compatibility
+                                 .equ	PORTD3	= 3	; Port D Data Register bit 3
+                                 .equ	PD3	= 3	; For compatibility
+                                 .equ	PORTD4	= 4	; Port D Data Register bit 4
+                                 .equ	PD4	= 4	; For compatibility
+                                 .equ	PORTD5	= 5	; Port D Data Register bit 5
+                                 .equ	PD5	= 5	; For compatibility
+                                 .equ	PORTD6	= 6	; Port D Data Register bit 6
+                                 .equ	PD6	= 6	; For compatibility
+                                 .equ	PORTD7	= 7	; Port D Data Register bit 7
+                                 .equ	PD7	= 7	; For compatibility
+                                 
+                                 ; DDRD - Port D Data Direction Register
+                                 .equ	DDD0	= 0	; Port D Data Direction Register bit 0
+                                 .equ	DDD1	= 1	; Port D Data Direction Register bit 1
+                                 .equ	DDD2	= 2	; Port D Data Direction Register bit 2
+                                 .equ	DDD3	= 3	; Port D Data Direction Register bit 3
+                                 .equ	DDD4	= 4	; Port D Data Direction Register bit 4
+                                 .equ	DDD5	= 5	; Port D Data Direction Register bit 5
+                                 .equ	DDD6	= 6	; Port D Data Direction Register bit 6
+                                 .equ	DDD7	= 7	; Port D Data Direction Register bit 7
+                                 
+                                 ; PIND - Port D Input Pins
+                                 .equ	PIND0	= 0	; Port D Input Pins bit 0
+                                 .equ	PIND1	= 1	; Port D Input Pins bit 1
+                                 .equ	PIND2	= 2	; Port D Input Pins bit 2
+                                 .equ	PIND3	= 3	; Port D Input Pins bit 3
+                                 .equ	PIND4	= 4	; Port D Input Pins bit 4
+                                 .equ	PIND5	= 5	; Port D Input Pins bit 5
+                                 .equ	PIND6	= 6	; Port D Input Pins bit 6
+                                 .equ	PIND7	= 7	; Port D Input Pins bit 7
+                                 
+                                 
+                                 ; ***** PORTE ************************
+                                 ; PORTE - Data Register, Port E
+                                 .equ	PORTE0	= 0	; 
+                                 .equ	PE0	= 0	; For compatibility
+                                 .equ	PORTE1	= 1	; 
+                                 .equ	PE1	= 1	; For compatibility
+                                 .equ	PORTE2	= 2	; 
+                                 .equ	PE2	= 2	; For compatibility
+                                 .equ	PORTE3	= 3	; 
+                                 .equ	PE3	= 3	; For compatibility
+                                 .equ	PORTE4	= 4	; 
+                                 .equ	PE4	= 4	; For compatibility
+                                 .equ	PORTE5	= 5	; 
+                                 .equ	PE5	= 5	; For compatibility
+                                 .equ	PORTE6	= 6	; 
+                                 .equ	PE6	= 6	; For compatibility
+                                 .equ	PORTE7	= 7	; 
+                                 .equ	PE7	= 7	; For compatibility
+                                 
+                                 ; DDRE - Data Direction Register, Port E
+                                 .equ	DDE0	= 0	; 
+                                 .equ	DDE1	= 1	; 
+                                 .equ	DDE2	= 2	; 
+                                 .equ	DDE3	= 3	; 
+                                 .equ	DDE4	= 4	; 
+                                 .equ	DDE5	= 5	; 
+                                 .equ	DDE6	= 6	; 
+                                 .equ	DDE7	= 7	; 
+                                 
+                                 ; PINE - Input Pins, Port E
+                                 .equ	PINE0	= 0	; 
+                                 .equ	PINE1	= 1	; 
+                                 .equ	PINE2	= 2	; 
+                                 .equ	PINE3	= 3	; 
+                                 .equ	PINE4	= 4	; 
+                                 .equ	PINE5	= 5	; 
+                                 .equ	PINE6	= 6	; 
+                                 .equ	PINE7	= 7	; 
+                                 
+                                 
+                                 ; ***** PORTF ************************
+                                 ; PORTF - Data Register, Port F
+                                 .equ	PORTF0	= 0	; 
+                                 .equ	PF0	= 0	; For compatibility
+                                 .equ	PORTF1	= 1	; 
+                                 .equ	PF1	= 1	; For compatibility
+                                 .equ	PORTF2	= 2	; 
+                                 .equ	PF2	= 2	; For compatibility
+                                 .equ	PORTF3	= 3	; 
+                                 .equ	PF3	= 3	; For compatibility
+                                 .equ	PORTF4	= 4	; 
+                                 .equ	PF4	= 4	; For compatibility
+                                 .equ	PORTF5	= 5	; 
+                                 .equ	PF5	= 5	; For compatibility
+                                 .equ	PORTF6	= 6	; 
+                                 .equ	PF6	= 6	; For compatibility
+                                 .equ	PORTF7	= 7	; 
+                                 .equ	PF7	= 7	; For compatibility
+                                 
+                                 ; DDRF - Data Direction Register, Port F
+                                 .equ	DDF0	= 0	; 
+                                 .equ	DDF1	= 1	; 
+                                 .equ	DDF2	= 2	; 
+                                 .equ	DDF3	= 3	; 
+                                 .equ	DDF4	= 4	; 
+                                 .equ	DDF5	= 5	; 
+                                 .equ	DDF6	= 6	; 
+                                 .equ	DDF7	= 7	; 
+                                 
+                                 ; PINF - Input Pins, Port F
+                                 .equ	PINF0	= 0	; 
+                                 .equ	PINF1	= 1	; 
+                                 .equ	PINF2	= 2	; 
+                                 .equ	PINF3	= 3	; 
+                                 .equ	PINF4	= 4	; 
+                                 .equ	PINF5	= 5	; 
+                                 .equ	PINF6	= 6	; 
+                                 .equ	PINF7	= 7	; 
+                                 
+                                 
+                                 ; ***** PORTG ************************
+                                 ; PORTG - Data Register, Port G
+                                 .equ	PORTG0	= 0	; 
+                                 .equ	PG0	= 0	; For compatibility
+                                 .equ	PORTG1	= 1	; 
+                                 .equ	PG1	= 1	; For compatibility
+                                 .equ	PORTG2	= 2	; 
+                                 .equ	PG2	= 2	; For compatibility
+                                 .equ	PORTG3	= 3	; 
+                                 .equ	PG3	= 3	; For compatibility
+                                 .equ	PORTG4	= 4	; 
+                                 .equ	PG4	= 4	; For compatibility
+                                 
+                                 ; DDRG - Data Direction Register, Port G
+                                 .equ	DDG0	= 0	; 
+                                 .equ	DDG1	= 1	; 
+                                 .equ	DDG2	= 2	; 
+                                 .equ	DDG3	= 3	; 
+                                 .equ	DDG4	= 4	; 
+                                 
+                                 ; PING - Input Pins, Port G
+                                 .equ	PING0	= 0	; 
+                                 .equ	PING1	= 1	; 
+                                 .equ	PING2	= 2	; 
+                                 .equ	PING3	= 3	; 
+                                 .equ	PING4	= 4	; 
+                                 
+                                 
+                                 ; ***** TIMER_COUNTER_0 **************
+                                 ; TCCR0 - Timer/Counter Control Register
+                                 .equ	CS00	= 0	; Clock Select 0
+                                 .equ	CS01	= 1	; Clock Select 1
+                                 .equ	CS02	= 2	; Clock Select 2
+                                 .equ	WGM01	= 3	; Waveform Generation Mode 1
+                                 .equ	CTC0	= WGM01	; For compatibility
+                                 .equ	COM00	= 4	; Compare match Output Mode 0
+                                 .equ	COM01	= 5	; Compare Match Output Mode 1
+                                 .equ	WGM00	= 6	; Waveform Generation Mode 0
+                                 .equ	PWM0	= WGM00	; For compatibility
+                                 .equ	FOC0	= 7	; Force Output Compare
+                                 
+                                 ; TCNT0 - Timer/Counter Register
+                                 .equ	TCNT0_0	= 0	; 
+                                 .equ	TCNT0_1	= 1	; 
+                                 .equ	TCNT0_2	= 2	; 
+                                 .equ	TCNT0_3	= 3	; 
+                                 .equ	TCNT0_4	= 4	; 
+                                 .equ	TCNT0_5	= 5	; 
+                                 .equ	TCNT0_6	= 6	; 
+                                 .equ	TCNT0_7	= 7	; 
+                                 
+                                 ; OCR0 - Output Compare Register
+                                 .equ	OCR0_0	= 0	; 
+                                 .equ	OCR0_1	= 1	; 
+                                 .equ	OCR0_2	= 2	; 
+                                 .equ	OCR0_3	= 3	; 
+                                 .equ	OCR0_4	= 4	; 
+                                 .equ	OCR0_5	= 5	; 
+                                 .equ	OCR0_6	= 6	; 
+                                 .equ	OCR0_7	= 7	; 
+                                 
+                                 ; ASSR - Asynchronus Status Register
+                                 .equ	TCR0UB	= 0	; Timer/Counter Control Register 0 Update Busy
+                                 .equ	OCR0UB	= 1	; Output Compare register 0 Busy
+                                 .equ	TCN0UB	= 2	; Timer/Counter0 Update Busy
+                                 .equ	AS0	= 3	; Asynchronus Timer/Counter 0
+                                 
+                                 ; TIMSK - Timer/Counter Interrupt Mask Register
+                                 .equ	TOIE0	= 0	; Timer/Counter0 Overflow Interrupt Enable
+                                 .equ	OCIE0	= 1	; Timer/Counter0 Output Compare Match Interrupt register
+                                 
+                                 ; TIFR - Timer/Counter Interrupt Flag register
+                                 .equ	TOV0	= 0	; Timer/Counter0 Overflow Flag
+                                 .equ	OCF0	= 1	; Output Compare Flag 0
+                                 
+                                 ; SFIOR - Special Function IO Register
+                                 ;.equ	PSR0	= 1	; Prescaler Reset Timer/Counter0
+                                 ;.equ	TSM	= 7	; Timer/Counter Synchronization Mode
+                                 
+                                 
+                                 ; ***** TIMER_COUNTER_1 **************
+                                 ; TIMSK - Timer/Counter Interrupt Mask Register
+                                 .equ	TOIE1	= 2	; Timer/Counter1 Overflow Interrupt Enable
+                                 .equ	OCIE1B	= 3	; Timer/Counter1 Output CompareB Match Interrupt Enable
+                                 .equ	OCIE1A	= 4	; Timer/Counter1 Output CompareA Match Interrupt Enable
+                                 .equ	TICIE1	= 5	; Timer/Counter1 Input Capture Interrupt Enable
+                                 
+                                 ; ETIMSK - Extended Timer/Counter Interrupt Mask Register
+                                 .equ	OCIE1C	= 0	; Timer/Counter 1, Output Compare Match C Interrupt Enable
+                                 
+                                 ; TIFR - Timer/Counter Interrupt Flag register
+                                 .equ	TOV1	= 2	; Timer/Counter1 Overflow Flag
+                                 .equ	OCF1B	= 3	; Output Compare Flag 1B
+                                 .equ	OCF1A	= 4	; Output Compare Flag 1A
+                                 .equ	ICF1	= 5	; Input Capture Flag 1
+                                 
+                                 ; ETIFR - Extended Timer/Counter Interrupt Flag register
+                                 .equ	OCF1C	= 0	; Timer/Counter 1, Output Compare C Match Flag
+                                 
+                                 ; SFIOR - Special Function IO Register
+                                 ;.equ	PSR321	= 0	; Prescaler Reset, T/C3, T/C2, T/C1
+                                 ;.equ	TSM	= 7	; Timer/Counter Synchronization Mode
+                                 
+                                 ; TCCR1A - Timer/Counter1 Control Register A
+                                 .equ	WGM10	= 0	; Waveform Generation Mode Bit 0
+                                 .equ	PWM10	= WGM10	; For compatibility
+                                 .equ	WGM11	= 1	; Waveform Generation Mode Bit 1
+                                 .equ	PWM11	= WGM11	; For compatibility
+                                 .equ	COM1C0	= 2	; Compare Output Mode 1C, bit 0
+                                 .equ	COM1C1	= 3	; Compare Output Mode 1C, bit 1
+                                 .equ	COM1B0	= 4	; Compare Output Mode 1B, bit 0
+                                 .equ	COM1B1	= 5	; Compare Output Mode 1B, bit 1
+                                 .equ	COM1A0	= 6	; Compare Ouput Mode 1A, bit 0
+                                 .equ	COM1A1	= 7	; Compare Output Mode 1A, bit 1
+                                 
+                                 ; TCCR1B - Timer/Counter1 Control Register B
+                                 .equ	CS10	= 0	; Clock Select bit 0
+                                 .equ	CS11	= 1	; Clock Select 1 bit 1
+                                 .equ	CS12	= 2	; Clock Select1 bit 2
+                                 .equ	WGM12	= 3	; Waveform Generation Mode
+                                 .equ	CTC10	= WGM12	; For compatibility
+                                 .equ	WGM13	= 4	; Waveform Generation Mode
+                                 .equ	CTC11	= WGM13	; For compatibility
+                                 .equ	ICES1	= 6	; Input Capture 1 Edge Select
+                                 .equ	ICNC1	= 7	; Input Capture 1 Noise Canceler
+                                 
+                                 ; TCCR1C - Timer/Counter1 Control Register C
+                                 .equ	FOC1C	= 5	; Force Output Compare for channel C
+                                 .equ	FOC1B	= 6	; Force Output Compare for channel B
+                                 .equ	FOC1A	= 7	; Force Output Compare for channel A
+                                 
+                                 
+                                 ; ***** TIMER_COUNTER_2 **************
+                                 ; TCCR2 - Timer/Counter Control Register
+                                 .equ	CS20	= 0	; Clock Select
+                                 .equ	CS21	= 1	; Clock Select
+                                 .equ	CS22	= 2	; Clock Select
+                                 .equ	WGM21	= 3	; Waveform Generation Mode
+                                 .equ	CTC2	= WGM21	; For compatibility
+                                 .equ	COM20	= 4	; Compare Match Output Mode
+                                 .equ	COM21	= 5	; Compare Match Output Mode
+                                 .equ	WGM20	= 6	; Wafeform Generation Mode
+                                 .equ	PWM2	= WGM20	; For compatibility
+                                 .equ	FOC2	= 7	; Force Output Compare
+                                 
+                                 ; TCNT2 - Timer/Counter Register
+                                 .equ	TCNT2_0	= 0	; Timer/Counter Register Bit 0
+                                 .equ	TCNT2_1	= 1	; Timer/Counter Register Bit 1
+                                 .equ	TCNT2_2	= 2	; Timer/Counter Register Bit 2
+                                 .equ	TCNT2_3	= 3	; Timer/Counter Register Bit 3
+                                 .equ	TCNT2_4	= 4	; Timer/Counter Register Bit 4
+                                 .equ	TCNT2_5	= 5	; Timer/Counter Register Bit 5
+                                 .equ	TCNT2_6	= 6	; Timer/Counter Register Bit 6
+                                 .equ	TCNT2_7	= 7	; Timer/Counter Register Bit 7
+                                 
+                                 ; OCR2 - Output Compare Register
+                                 .equ	OCR2_0	= 0	; Output Compare Register Bit 0
+                                 .equ	OCR2_1	= 1	; Output Compare Register Bit 1
+                                 .equ	OCR2_2	= 2	; Output Compare Register Bit 2
+                                 .equ	OCR2_3	= 3	; Output Compare Register Bit 3
+                                 .equ	OCR2_4	= 4	; Output Compare Register Bit 4
+                                 .equ	OCR2_5	= 5	; Output Compare Register Bit 5
+                                 .equ	OCR2_6	= 6	; Output Compare Register Bit 6
+                                 .equ	OCR2_7	= 7	; Output Compare Register Bit 7
+                                 
+                                 ; TIMSK - 
+                                 .equ	TOIE2	= 6	; 
+                                 .equ	OCIE2	= 7	; 
+                                 
+                                 ; TIFR - Timer/Counter Interrupt Flag Register
+                                 .equ	TOV2	= 6	; Timer/Counter2 Overflow Flag
+                                 .equ	OCF2	= 7	; Output Compare Flag 2
+                                 
+                                 
+                                 ; ***** TIMER_COUNTER_3 **************
+                                 ; ETIMSK - Extended Timer/Counter Interrupt Mask Register
+                                 .equ	OCIE3C	= 1	; Timer/Counter3, Output Compare Match Interrupt Enable
+                                 .equ	TOIE3	= 2	; Timer/Counter3 Overflow Interrupt Enable
+                                 .equ	OCIE3B	= 3	; Timer/Counter3 Output CompareB Match Interrupt Enable
+                                 .equ	OCIE3A	= 4	; Timer/Counter3 Output CompareA Match Interrupt Enable
+                                 .equ	TICIE3	= 5	; Timer/Counter3 Input Capture Interrupt Enable
+                                 
+                                 ; ETIFR - Extended Timer/Counter Interrupt Flag register
+                                 .equ	OCF3C	= 1	; Timer/Counter3 Output Compare C Match Flag
+                                 .equ	TOV3	= 2	; Timer/Counter3 Overflow Flag
+                                 .equ	OCF3B	= 3	; Output Compare Flag 1B
+                                 .equ	OCF3A	= 4	; Output Compare Flag 1A
+                                 .equ	ICF3	= 5	; Input Capture Flag 1
+                                 
+                                 ; SFIOR - Special Function IO Register
+                                 ;.equ	PSR321	= 0	; Prescaler Reset, T/C3, T/C2, T/C1
+                                 ;.equ	PSR1	= PSR321	; For compatibility
+                                 ;.equ	PSR2	= PSR321	; For compatibility
+                                 ;.equ	TSM	= 7	; Timer/Counter Synchronization Mode
+                                 
+                                 ; TCCR3A - Timer/Counter3 Control Register A
+                                 .equ	WGM30	= 0	; Waveform Generation Mode Bit 0
+                                 .equ	PWM30	= WGM30	; For compatibility
+                                 .equ	WGM31	= 1	; Waveform Generation Mode Bit 1
+                                 .equ	PWM31	= WGM31	; For compatibility
+                                 .equ	COM3C0	= 2	; Compare Output Mode 3C, bit 0
+                                 .equ	COM3C1	= 3	; Compare Output Mode 3C, bit 1
+                                 .equ	COM3B0	= 4	; Compare Output Mode 3B, bit 0
+                                 .equ	COM3B1	= 5	; Compare Output Mode 3B, bit 1
+                                 .equ	COM3A0	= 6	; Comparet Ouput Mode 3A, bit 0
+                                 .equ	COM3A1	= 7	; Compare Output Mode 3A, bit 1
+                                 
+                                 ; TCCR3B - Timer/Counter3 Control Register B
+                                 .equ	CS30	= 0	; Clock Select 3 bit 0
+                                 .equ	CS31	= 1	; Clock Select 3 bit 1
+                                 .equ	CS32	= 2	; Clock Select3 bit 2
+                                 .equ	WGM32	= 3	; Waveform Generation Mode
+                                 .equ	CTC30	= WGM32	; For compatibility
+                                 .equ	WGM33	= 4	; Waveform Generation Mode
+                                 .equ	CTC31	= WGM33	; For compatibility
+                                 .equ	ICES3	= 6	; Input Capture 3 Edge Select
+                                 .equ	ICNC3	= 7	; Input Capture 3  Noise Canceler
+                                 
+                                 ; TCCR3C - Timer/Counter3 Control Register C
+                                 .equ	FOC3C	= 5	; Force Output Compare for channel C
+                                 .equ	FOC3B	= 6	; Force Output Compare for channel B
+                                 .equ	FOC3A	= 7	; Force Output Compare for channel A
+                                 
+                                 ; TCNT3L - Timer/Counter3 Low Byte
+                                 .equ	TCN3L0	= 0	; Timer/Counter 3 bit 0
+                                 .equ	TCN3L1	= 1	; Timer/Counter 3 bit 1
+                                 .equ	TCN3L2	= 2	; Timer/Counter 3 bit 2
+                                 .equ	TCN3L3	= 3	; Timer/Counter 3 bit 3
+                                 .equ	TCN3L4	= 4	; Timer/Counter 3 bit 4
+                                 .equ	TCN3L5	= 5	; Timer/Counter 3 bit 5
+                                 .equ	TCN3L6	= 6	; Timer/Counter 3 bit 6
+                                 .equ	TCN3L7	= 7	; Timer/Counter 3 bit 7
+                                 
+                                 
+                                 ; ***** WATCHDOG *********************
+                                 ; WDTCR - Watchdog Timer Control Register
+                                 .equ	WDTCSR	= WDTCR	; For compatibility
+                                 .equ	WDP0	= 0	; Watch Dog Timer Prescaler bit 0
+                                 .equ	WDP1	= 1	; Watch Dog Timer Prescaler bit 1
+                                 .equ	WDP2	= 2	; Watch Dog Timer Prescaler bit 2
+                                 .equ	WDE	= 3	; Watch Dog Enable
+                                 .equ	WDCE	= 4	; Watchdog Change Enable
+                                 .equ	WDTOE	= WDCE	; For compatibility
+                                 
+                                 
+                                 ; ***** AD_CONVERTER *****************
+                                 ; ADMUX - The ADC multiplexer Selection Register
+                                 .equ	MUX0	= 0	; Analog Channel and Gain Selection Bits
+                                 .equ	MUX1	= 1	; Analog Channel and Gain Selection Bits
+                                 .equ	MUX2	= 2	; Analog Channel and Gain Selection Bits
+                                 .equ	MUX3	= 3	; Analog Channel and Gain Selection Bits
+                                 .equ	MUX4	= 4	; Analog Channel and Gain Selection Bits
+                                 .equ	ADLAR	= 5	; Left Adjust Result
+                                 .equ	REFS0	= 6	; Reference Selection Bit 0
+                                 .equ	REFS1	= 7	; Reference Selection Bit 1
+                                 
+                                 ; ADCSRA - The ADC Control and Status register
+                                 .equ	ADCSR	= ADCSRA	; For compatibility
+                                 .equ	ADPS0	= 0	; ADC  Prescaler Select Bits
+                                 .equ	ADPS1	= 1	; ADC  Prescaler Select Bits
+                                 .equ	ADPS2	= 2	; ADC  Prescaler Select Bits
+                                 .equ	ADIE	= 3	; ADC Interrupt Enable
+                                 .equ	ADIF	= 4	; ADC Interrupt Flag
+                                 .equ	ADFR	= 5	; ADC  Free Running Select
+                                 .equ	ADSC	= 6	; ADC Start Conversion
+                                 .equ	ADEN	= 7	; ADC Enable
+                                 
+                                 ; ADCH - ADC Data Register High Byte
+                                 .equ	ADCH0	= 0	; ADC Data Register High Byte Bit 0
+                                 .equ	ADCH1	= 1	; ADC Data Register High Byte Bit 1
+                                 .equ	ADCH2	= 2	; ADC Data Register High Byte Bit 2
+                                 .equ	ADCH3	= 3	; ADC Data Register High Byte Bit 3
+                                 .equ	ADCH4	= 4	; ADC Data Register High Byte Bit 4
+                                 .equ	ADCH5	= 5	; ADC Data Register High Byte Bit 5
+                                 .equ	ADCH6	= 6	; ADC Data Register High Byte Bit 6
+                                 .equ	ADCH7	= 7	; ADC Data Register High Byte Bit 7
+                                 
+                                 ; ADCL - ADC Data Register Low Byte
+                                 .equ	ADCL0	= 0	; ADC Data Register Low Byte Bit 0
+                                 .equ	ADCL1	= 1	; ADC Data Register Low Byte Bit 1
+                                 .equ	ADCL2	= 2	; ADC Data Register Low Byte Bit 2
+                                 .equ	ADCL3	= 3	; ADC Data Register Low Byte Bit 3
+                                 .equ	ADCL4	= 4	; ADC Data Register Low Byte Bit 4
+                                 .equ	ADCL5	= 5	; ADC Data Register Low Byte Bit 5
+                                 .equ	ADCL6	= 6	; ADC Data Register Low Byte Bit 6
+                                 .equ	ADCL7	= 7	; ADC Data Register Low Byte Bit 7
+                                 
+                                 
+                                 
+                                 ; ***** LOCKSBITS ********************************************************
+                                 .equ	LB1	= 0	; Lock bit
+                                 .equ	LB2	= 1	; Lock bit
+                                 .equ	BLB01	= 2	; Boot Lock bit
+                                 .equ	BLB02	= 3	; Boot Lock bit
+                                 .equ	BLB11	= 4	; Boot lock bit
+                                 .equ	BLB12	= 5	; Boot lock bit
+                                 
+                                 
+                                 ; ***** FUSES ************************************************************
+                                 ; LOW fuse bits
+                                 .equ	CKSEL0	= 0	; Select Clock Source
+                                 .equ	CKSEL1	= 1	; Select Clock Source
+                                 .equ	CKSEL2	= 2	; Select Clock Source
+                                 .equ	CKSEL3	= 3	; Select Clock Source
+                                 .equ	SUT0	= 4	; Select start-up time
+                                 .equ	SUT1	= 5	; Select start-up time
+                                 .equ	BODEN	= 6	; Brown out detector enable
+                                 .equ	BODLEVEL	= 7	; Brown out detector trigger level
+                                 
+                                 ; HIGH fuse bits
+                                 .equ	BOOTRST	= 0	; Select Reset Vector
+                                 .equ	BOOTSZ0	= 1	; Select Boot Size
+                                 .equ	BOOTSZ1	= 2	; Select Boot Size
+                                 .equ	EESAVE	= 3	; EEPROM memory is preserved through chip erase
+                                 .equ	CKOPT	= 4	; Oscillator Options
+                                 .equ	SPIEN	= 5	; Enable Serial programming and Data Downloading
+                                 .equ	JTAGEN	= 6	; Enable JTAG
+                                 .equ	OCDEN	= 7	; Enable OCD
+                                 
+                                 ; EXTENDED fuse bits
+                                 .equ	WDTON	= 0	; Watchdog timer always on
+                                 .equ	M103C	= 1	; ATmega103 compatibility mode
+                                 
+                                 
+                                 
+                                 ; ***** CPU REGISTER DEFINITIONS *****************************************
+                                 .def	XH	= r27
+                                 .def	XL	= r26
+                                 .def	YH	= r29
+                                 .def	YL	= r28
+                                 .def	ZH	= r31
+                                 .def	ZL	= r30
+                                 
+                                 
+                                 
+                                 ; ***** DATA MEMORY DECLARATIONS *****************************************
+                                 .equ	FLASHEND	= 0xffff	; Note: Word address
+                                 .equ	IOEND	= 0x00ff
+                                 .equ	SRAM_START	= 0x0100
+                                 .equ	SRAM_SIZE	= 4096
+                                 .equ	RAMEND	= 0x10ff
+                                 .equ	XRAMEND	= 0xffff
+                                 .equ	E2END	= 0x0fff
+                                 .equ	EEPROMEND	= 0x0fff
+                                 .equ	EEADRBITS	= 12
+                                 #pragma AVRPART MEMORY PROG_FLASH 131072
+                                 #pragma AVRPART MEMORY EEPROM 4096
+                                 #pragma AVRPART MEMORY INT_SRAM SIZE 4096
+                                 #pragma AVRPART MEMORY INT_SRAM START_ADDR 0x100
+                                 
+                                 
+                                 
+                                 ; ***** BOOTLOADER DECLARATIONS ******************************************
+                                 .equ	NRWW_START_ADDR	= 0xf000
+                                 .equ	NRWW_STOP_ADDR	= 0xffff
+                                 .equ	RWW_START_ADDR	= 0x0
+                                 .equ	RWW_STOP_ADDR	= 0xefff
+                                 .equ	PAGESIZE	= 128
+                                 .equ	FIRSTBOOTSTART	= 0xfe00
+                                 .equ	SECONDBOOTSTART	= 0xfc00
+                                 .equ	THIRDBOOTSTART	= 0xf800
+                                 .equ	FOURTHBOOTSTART	= 0xf000
+                                 .equ	SMALLBOOTSTART	= FIRSTBOOTSTART
+                                 .equ	LARGEBOOTSTART	= FOURTHBOOTSTART
+                                 
+                                 
+                                 
+                                 ; ***** INTERRUPT VECTORS ************************************************
+                                 .equ	INT0addr	= 0x0002	; External Interrupt Request 0
+                                 .equ	INT1addr	= 0x0004	; External Interrupt Request 1
+                                 .equ	INT2addr	= 0x0006	; External Interrupt Request 2
+                                 .equ	INT3addr	= 0x0008	; External Interrupt Request 3
+                                 .equ	INT4addr	= 0x000a	; External Interrupt Request 4
+                                 .equ	INT5addr	= 0x000c	; External Interrupt Request 5
+                                 .equ	INT6addr	= 0x000e	; External Interrupt Request 6
+                                 .equ	INT7addr	= 0x0010	; External Interrupt Request 7
+                                 .equ	OC2addr	= 0x0012	; Timer/Counter2 Compare Match
+                                 .equ	OVF2addr	= 0x0014	; Timer/Counter2 Overflow
+                                 .equ	ICP1addr	= 0x0016	; Timer/Counter1 Capture Event
+                                 .equ	OC1Aaddr	= 0x0018	; Timer/Counter1 Compare Match A
+                                 .equ	OC1Baddr	= 0x001a	; Timer/Counter Compare Match B
+                                 .equ	OVF1addr	= 0x001c	; Timer/Counter1 Overflow
+                                 .equ	OC0addr	= 0x001e	; Timer/Counter0 Compare Match
+                                 .equ	OVF0addr	= 0x0020	; Timer/Counter0 Overflow
+                                 .equ	SPIaddr	= 0x0022	; SPI Serial Transfer Complete
+                                 .equ	URXC0addr	= 0x0024	; USART0, Rx Complete
+                                 .equ	UDRE0addr	= 0x0026	; USART0 Data Register Empty
+                                 .equ	UTXC0addr	= 0x0028	; USART0, Tx Complete
+                                 .equ	ADCCaddr	= 0x002a	; ADC Conversion Complete
+                                 .equ	ERDYaddr	= 0x002c	; EEPROM Ready
+                                 .equ	ACIaddr	= 0x002e	; Analog Comparator
+                                 .equ	OC1Caddr	= 0x0030	; Timer/Counter1 Compare Match C
+                                 .equ	ICP3addr	= 0x0032	; Timer/Counter3 Capture Event
+                                 .equ	OC3Aaddr	= 0x0034	; Timer/Counter3 Compare Match A
+                                 .equ	OC3Baddr	= 0x0036	; Timer/Counter3 Compare Match B
+                                 .equ	OC3Caddr	= 0x0038	; Timer/Counter3 Compare Match C
+                                 .equ	OVF3addr	= 0x003a	; Timer/Counter3 Overflow
+                                 .equ	URXC1addr	= 0x003c	; USART1, Rx Complete
+                                 .equ	UDRE1addr	= 0x003e	; USART1, Data Register Empty
+                                 .equ	UTXC1addr	= 0x0040	; USART1, Tx Complete
+                                 .equ	TWIaddr	= 0x0042	; 2-wire Serial Interface
+                                 .equ	SPMRaddr	= 0x0044	; Store Program Memory Read
+                                 
+                                 .equ	INT_VECTORS_SIZE	= 70	; size in words
+                                 
+                                 #endif  /* _M128DEF_INC_ */
+                                 
+                                 ; ***** END OF FILE ******************************************************
+                                 
+                                 ;*	 Author: Felipe Orrico Scognamiglio
+                                 ;*   Date: March 15, 2021
+                                 ;***********************************************************
+                                 .include "m128def.inc"			; Include definition file
+                                 
+                                 ;***** Created: 2011-02-09 12:03 ******* Source: ATmega128.xml ***********
+                                 ;*************************************************************************
+                                 ;* A P P L I C A T I O N   N O T E   F O R   T H E   A V R   F A M I L Y
+                                 ;* 
+                                 ;* Number            : AVR000
+                                 ;* File Name         : "m128def.inc"
+                                 ;* Title             : Register/Bit Definitions for the ATmega128
+                                 ;* Date              : 2011-02-09
+                                 ;* Version           : 2.35
+                                 ;* Support E-mail    : avr@atmel.com
+                                 ;* Target MCU        : ATmega128
+                                 ;* 
+                                 ;* DESCRIPTION
+                                 ;* When including this file in the assembly program file, all I/O register 
+                                 ;* names and I/O register bit names appearing in the data book can be used.
+                                 ;* In addition, the six registers forming the three data pointers X, Y and 
+                                 ;* Z have been assigned names XL - ZH. Highest RAM address for Internal 
+                                 ;* SRAM is also defined 
+                                 ;* 
+                                 ;* The Register names are represented by their hexadecimal address.
+                                 ;* 
+                                 ;* The Register Bit names are represented by their bit number (0-7).
+                                 ;* 
+                                 ;* Please observe the difference in using the bit names with instructions
+                                 ;* such as "sbr"/"cbr" (set/clear bit in register) and "sbrs"/"sbrc"
+                                 ;* (skip if bit in register set/cleared). The following example illustrates
+                                 ;* this:
+                                 ;* 
+                                 ;* in    r16,PORTB             ;read PORTB latch
+                                 ;* sbr   r16,(1<<PB6)+(1<<PB5) ;set PB6 and PB5 (use masks, not bit#)
+                                 ;* out   PORTB,r16             ;output to PORTB
+                                 ;* 
+                                 ;* in    r16,TIFR              ;read the Timer Interrupt Flag Register
+                                 ;* sbrc  r16,TOV0              ;test the overflow flag (use bit#)
+                                 ;* rjmp  TOV0_is_set           ;jump if set
+                                 ;* ...                         ;otherwise do something else
+                                 ;*************************************************************************
+                                 
+                                 #ifndef _M128DEF_INC_
+                                 #endif  /* _M128DEF_INC_ */
+                                 
+                                 ; ***** END OF FILE ******************************************************
+                                 ;***********************************************************
+                                 ;*	Internal Register Definitions and Constants
+                                 ;*	(feel free to edit these or add others)
+                                 ;***********************************************************
+                                 .def	rlo = r0				; Low byte of MUL result
+                                 .def	rhi = r1				; High byte of MUL result
+                                 .def	zero = r23				; Zero register, set to zero in INIT, useful for calculations
+                                 .def	A = r3					; A variable
+                                 .def	B = r4					; Another variable
+                                 .def	mpr = r16				; Multipurpose register 
+                                 .def	oloop = r17				; Outer Loop Counter
+                                 .def	iloop = r18				; Inner Loop Counter
+                                 .def	dataptr = r19			; data ptr
+                                 
+                                 ;***********************************************************
+                                 ;*	Data segment variables
+                                 ;*	(feel free to edit these or add others)
+                                 ;***********************************************************
+                                 .dseg
+                                 .org	$0100						; data memory allocation for operands
+000100                           COMPARE_RADIUS:		.byte 2			; allocate 2 bytes for a variable to compare radius to min radius
+000102                           COMPARE_GM:			.byte 4			; allocate 4 bytes for a variable to compare GM to min GM
+000106                           COMPARE_PERIOD:		.byte 3			; allocate 3 bytes for a variable to compare period to min period
+000109                           COMPARE_V:			.byte 2			; allocate 2 bytes for a variable to compare velocity to min velocity
+                                 .org	$0200
+000200                           PlanetGM:		.byte 4
+                                 .org	$0210
+000210                           Radius:			.byte 2
+                                 
+                                 ;
+                                 ;	Allocating Memory used for operands and partial values
+                                 ;	Please no not modify any of these values below
+                                 ;
+                                 
+                                 .org	$0220
+                                 DIV32_OP1:
+000220                           		.byte 4	
+                                 DIV32_OP2:
+000224                           		.byte 4
+                                 DIV32_Result:
+000228                           		.byte 3
+                                 DIV32_Rem:
+00022b                           		.byte 4
+                                 .org	$0250
+                                 SQRT_32_CNT:				
+000250                           		.byte 3
+                                 .org	$0260
+                                 SQRT_32_VAL:				
+000260                           		.byte 4
+                                 .org	$0270
+                                 MUL24_OP1:
+000270                           		.byte 3	
+                                 MUL24_OP2:
+000273                           		.byte 3	
+                                 .org $0280
+                                 MUL24_Result:
+000280                           		.byte 6	
+                                 
+                                 .org $0290
+                                 MUL32_OP1:
+000290                           		.byte 4	
+                                 MUL32_OP2:
+000294                           		.byte 4	
+                                 
+                                 .org	$02A0	
+                                 MUL32_Result:
+0002a0                           		.byte 8	
+                                 
+                                 .org $02B0
+                                 MUL16_OP1:
+0002b0                           		.byte 2	
+                                 MUL16_OP2:
+0002b2                           		.byte 2	
+                                 
+                                 .org	$02C0	
+                                 MUL16_Result:
+0002c0                           		.byte 4
+                                 
+                                 .org $02D0
+                                 DIV64_OP1:
+0002d0                           		.byte 8	
+                                 DIV64_OP2:
+0002d8                           		.byte 8
+                                 
+                                 .org	$02E0
+                                 DIV64_Result:
+0002e0                           		.byte 8	
+                                 
+                                 .org $02F0
+                                 DIV64_Rem:
+0002f0                           		.byte 8
+                                 .org $03f0
+                                 SQRT_64_CNT:				
+0003f0                           		.byte 8
+                                 .org	$0260
+                                 SQRT_64_VAL:				
+000260                           		.byte 8
+                                 
+                                 ;
+                                 ;	Allocating Memory used for operands and partial values
+                                 ;	Please no not modify any of these values above
+                                 ;
+                                 
+                                 
+                                 ;***********************************************************
+                                 ;*	Start of Code Segment
+                                 ;***********************************************************
+                                 .cseg							; Beginning of code segment
+                                 ;-----------------------------------------------------------
+                                 ; Interrupt Vectors
+                                 ;-----------------------------------------------------------
+                                 .org	$0000					; Beginning of IVs
+000000 c045                      		rjmp 	INIT			; Reset interrupt
+                                 .org	$0046					; End of Interrupt Vectors
+                                 ;-----------------------------------------------------------
+                                 ; Program Initialization
+                                 ;-----------------------------------------------------------
+                                 INIT:	; The initialization routine
+                                 		
+000046 ef0f                      		ldi	mpr, low(RAMEND)
+000047 bf0d                      		out	SPL, mpr			; Load SPL with low byte of RAMEND
+000048 e100                      		ldi	mpr, high(RAMEND)
+000049 bf0e                      		out	SPH, mpr			; Load SPH with high byte of RAMEND
+                                 								; Init the 2 stack pointer registers
+00004a 2777                      		clr		zero
+                                 
+                                 		;load compare value for GM into volatile mem.
+00004b ede2                      		ldi ZL, low(MINGM<<1)
+00004c e0f9                      		ldi ZH, high(MINGM<<1)
+00004d e0b1                      		ldi XH, high(COMPARE_GM)
+00004e e0a2                      		ldi XL, low(COMPARE_GM)
+00004f 9105                      		lpm mpr, Z+
+000050 930d                      		st X+, mpr
+000051 9105                      		lpm mpr, Z+
+000052 930d                      		st X+, mpr
+000053 2700                      		clr mpr
+000054 930c                      		st X, mpr
+                                 
+                                 		;load compare value for Radius into volatile mem.
+000055 ede4                      		ldi ZL, low(MINRAD<<1)
+000056 e0f9                      		ldi ZH, high(MINRAD<<1)
+000057 e0b1                      		ldi XH, high(COMPARE_RADIUS)
+000058 e0a0                      		ldi XL, low(COMPARE_RADIUS)
+000059 9105                      		lpm mpr, Z+
+00005a 930d                      		st X+, mpr
+00005b 9105                      		lpm mpr, Z+
+00005c 930d                      		st X+, mpr
+                                 
+                                 		;load compare value for Period into volatile mem.
+00005d ede6                      		ldi ZL, low(MINPER<<1)
+00005e e0f9                      		ldi ZH, high(MINPER<<1)
+00005f e0b1                      		ldi XH, high(COMPARE_PERIOD)
+000060 e0a6                      		ldi XL, low(COMPARE_PERIOD)
+000061 9105                      		lpm mpr, Z+
+000062 930d                      		st X+, mpr
+000063 9105                      		lpm mpr, Z+
+000064 930d                      		st X+, mpr
+000065 2700                      		clr mpr
+000066 930c                      		st X, mpr
+                                 
+000067 e0b1                      		ldi XH, high(COMPARE_V)
+000068 e0a9                      		ldi XL, low(COMPARE_V)
+000069 e001                      		ldi mpr, 1
+00006a 930d                      		st X+, mpr
+00006b 2700                      		clr mpr
+00006c 930d                      		st X+, mpr
+                                 
+                                 
+                                 MAIN:
+                                 	
+                                 	;loading value of "selected planet" (Index)
+00006d e0f9                      	ldi ZH, high(SelectedPlanet<<1)
+00006e edee                      	ldi ZL, low(SelectedPlanet<<1)
+                                 
+00006f 9144                      	lpm r20, Z
+                                 
+                                 	;
+                                 	;	Loading selected planet GM into memory location "PlanetGM"
+                                 	;
+                                 
+000070 e0f9                      	ldi ZH, high(PlanetInfo<<1)
+000071 eee0                      	ldi ZL, low(PlanetInfo<<1)
+                                 
+                                 	;loop to get address of selected planet
+                                 	planet_selector_loop_BEG:
+000072 3040                      	cpi r20, $00
+000073 f019                      	breq planet_selector_loop_END
+000074 9634                      	adiw Z, 4
+000075 954a                      	dec r20
+000076 cffb                      	rjmp planet_selector_loop_BEG
+                                 	planet_selector_loop_END:
+                                 	;load GM of selected planet to memory
+000077 e0b2                      	ldi XH, high(PlanetGM)
+000078 e0a0                      	ldi XL, low(PlanetGM) 
+                                 
+000079 9105                      	lpm mpr, Z+
+00007a 930d                      	st X+, mpr
+00007b 9105                      	lpm mpr, Z+
+00007c 930d                      	st X+, mpr
+00007d 9105                      	lpm mpr, Z+
+00007e 930d                      	st X+, mpr
+00007f 9105                      	lpm mpr, Z+
+000080 930d                      	st X+, mpr
+                                 
+                                 	;load Orbital Radius to memory
+000081 e0f9                      	ldi ZH, high(OrbitalRadius<<1)
+000082 edec                      	ldi ZL, low(OrbitalRadius<<1)
+000083 e0b2                      	ldi XH, high(Radius)
+000084 e1a0                      	ldi XL, low(Radius)
+                                 
+000085 9105                      	lpm mpr, Z+
+000086 930d                      	st X+, mpr
+000087 9105                      	lpm mpr, Z+
+000088 930d                      	st X+, mpr
+                                 
+                                 	;
+                                 	; Now checking if Radius is less than 1000
+                                 	;
+                                 
+000089 e0b2                      	ldi XH, high(Radius)
+00008a e1a0                      	ldi XL, low(Radius)
+00008b e0d1                      	ldi YH, high(COMPARE_RADIUS)
+00008c e0c0                      	ldi YL, low(COMPARE_RADIUS)
+                                 	;	Checks if the value in X is less than the value in Y (16-bits)
+                                 	;	It will set the carry flag if X is less than Y, o.w. cleared
+00008d 940e 025b                 	call COMPARE_16
+00008f f438                      	brcc main_continue
+                                 
+000090 ef0f                      	ldi mpr, $FF
+000091 e0a3                      	ldi XL, low(Velocity)
+000092 e0be                      	ldi XH, high(Velocity)
+                                 
+000093 930d                      	st X+, mpr
+000094 930d                      	st X+, mpr
+                                 	
+000095 940c 04ec                 	jmp	Grading
+                                 
+                                 	main_continue:
+                                 
+                                 	;
+                                 	; Now comparing if GM is less than 1001
+                                 	;
+                                 
+000097 e0b2                      	ldi XH, high(PlanetGM)
+000098 e0a0                      	ldi XL, low(PlanetGM)
+000099 e0d1                      	ldi YH, high(COMPARE_GM)
+00009a e0c2                      	ldi YL, low(COMPARE_GM)
+                                 	;	Checks if the value in X is less than the value in Y (32-bits)
+                                 	;	It will set the carry flag if X is less than Y, o.w. cleared
+00009b 940e 0224                 	call COMPARE_32
+00009d f440                      	brcc main_continue2
+                                 
+00009e ef0f                      	ldi mpr, $FF
+00009f e0ac                      	ldi XL, low(Period)
+0000a0 e0be                      	ldi XH, high(Period)
+                                 
+0000a1 930d                      	st X+, mpr
+0000a2 930d                      	st X+, mpr
+0000a3 930d                      	st X+, mpr
+                                 	
+0000a4 940c 04ec                 	jmp	Grading
+                                 	
+                                 	main_continue2:
+                                 
+                                 	;At this point, all values are loaded to memory
+                                 
+                                 	;
+                                 	;	Loading values for Velocity Calculation
+                                 	;
+                                 
+                                 	;Loading GM into Division
+0000a6 e0b2                      	ldi XH, high(PlanetGM)
+0000a7 e0a0                      	ldi XL, low(PlanetGM)
+0000a8 e0d2                      	ldi YH, high(DIV32_OP1)
+0000a9 e2c0                      	ldi YL, low(DIV32_OP1)
+                                 
+0000aa 910d                      	ld mpr, X+
+0000ab 9309                      	st Y+, mpr
+0000ac 910d                      	ld mpr, X+
+0000ad 9309                      	st Y+, mpr
+0000ae 910d                      	ld mpr, X+
+0000af 9309                      	st Y+, mpr
+0000b0 910d                      	ld mpr, X+
+0000b1 9309                      	st Y+, mpr
+                                 
+                                 	;Loading Radius into Division
+0000b2 e0b2                      	ldi XH, high(Radius)
+0000b3 e1a0                      	ldi XL, low(Radius)
+0000b4 e0d2                      	ldi YH, high(DIV32_OP2)
+0000b5 e2c4                      	ldi YL, low(DIV32_OP2)
+                                 
+0000b6 910d                      	ld mpr, X+
+0000b7 9309                      	st Y+, mpr
+0000b8 910d                      	ld mpr, X+
+0000b9 9309                      	st Y+, mpr
+                                 
+                                 	;call division
+0000ba 940e 016e                 	call DIV32
+                                 	
+0000bc e0be                      	ldi XH, high(Quotient)
+0000bd e0a0                      	ldi XL, low(Quotient)
+0000be e0d2                      	ldi YH, high(DIV32_Result)
+0000bf e2c8                      	ldi YL, low(DIV32_Result)
+                                 
+0000c0 9109                      	ld mpr, Y+
+0000c1 930d                      	st X+, mpr
+0000c2 9109                      	ld mpr, Y+
+0000c3 930d                      	st X+, mpr
+0000c4 9109                      	ld mpr, Y+
+0000c5 930d                      	st X+, mpr
+                                 	
+0000c6 e0be                      	ldi XH, high(Quotient)
+0000c7 e0a0                      	ldi XL, low(Quotient)
+0000c8 e0d2                      	ldi YH, high(SQRT_32_VAL)
+0000c9 e6c0                      	ldi YL, low(SQRT_32_VAL)
+                                 
+0000ca 910d                      	ld mpr, X+
+0000cb 9309                      	st Y+, mpr
+0000cc 910d                      	ld mpr, X+
+0000cd 9309                      	st Y+, mpr
+0000ce 910d                      	ld mpr, X+
+0000cf 9309                      	st Y+, mpr
+                                 	;ld mpr, X+
+                                 	;st Y+, mpr
+                                 
+0000d0 940e 026e                 	call sqrt_32
+                                 
+                                 	;
+                                 	;	Check to see if velocity value is 0
+                                 	;
+                                 
+0000d2 e0be                      	ldi XH, high(Velocity)
+0000d3 e0a3                      	ldi XL, low(Velocity)
+0000d4 e0d1                      	ldi YH, high(COMPARE_V)
+0000d5 e0c9                      	ldi YL, low(COMPARE_V)
+                                 
+0000d6 940e 025b                 	call COMPARE_16
+                                 	;	Checks if the value in X is less than the value in Y (16-bits)
+                                 	;	It will set the carry flag if X is less than Y, o.w. cleared
+0000d8 f430                      	brcc main_velocity_not_0
+                                 
+                                 	;velocity is 0, load -2 to velocity value
+0000d9 ef0e                      	ldi mpr, $FE
+0000da 930d                      	st X+, mpr
+0000db ef0f                      	ldi mpr, $FF
+0000dc 930c                      	st X, mpr
+                                 
+                                 	;end program
+0000dd 940c 04ec                 	jmp Grading
+                                 
+                                 	main_velocity_not_0:
+                                 
+                                 	;
+                                 	;	Loading Values for Period Calculation (Product Calculation)
+                                 	;
+                                 
+                                 	;load Radius to MUL16 OP1 and OP2
+0000df e0b2                      	ldi XH, high(Radius)
+0000e0 e1a0                      	ldi XL, low(Radius)
+0000e1 ebc0                      	ldi YL, low(MUL16_OP1)
+0000e2 e0d2                      	ldi YH, high(MUL16_OP1)
+                                 
+0000e3 910d                      	ld mpr, X+
+0000e4 9309                      	st Y+, mpr
+0000e5 910d                      	ld mpr, X+
+0000e6 9309                      	st Y+, mpr
+                                 
+0000e7 ebc2                      	ldi YL, low(MUL16_OP2)
+0000e8 e0d2                      	ldi YH, high(MUL16_OP2)
+0000e9 e0b2                      	ldi XH, high(Radius)
+0000ea e1a0                      	ldi XL, low(Radius)
+                                 
+0000eb 910d                      	ld mpr, X+
+0000ec 9309                      	st Y+, mpr
+0000ed 910d                      	ld mpr, X+
+0000ee 9309                      	st Y+, mpr
+                                 
+                                 	;calculate Radius^2
+0000ef 940e 042f                 	call MUL16
+                                 
+                                 	;get first result from MUL16 (Radius^2) into OP1 of MUL32
+                                 
+0000f1 e9c0                      	ldi YL, low(MUL32_OP1)
+0000f2 e0d2                      	ldi YH, high(MUL32_OP1)
+0000f3 e0b2                      	ldi XH, high(MUL16_Result)
+0000f4 eca0                      	ldi XL, low(MUL16_Result)
+                                 
+0000f5 910d                      	ld mpr, X+
+0000f6 9309                      	st Y+, mpr
+0000f7 910d                      	ld mpr, X+
+0000f8 9309                      	st Y+, mpr
+0000f9 910d                      	ld mpr, X+
+0000fa 9309                      	st Y+, mpr
+0000fb 910d                      	ld mpr, X+
+0000fc 9309                      	st Y+, mpr
+                                 
+                                 	;clear results for multiplication
+0000fd e0b2                      	ldi XH, high(MUL16_Result)
+0000fe eca0                      	ldi XL, low(MUL16_Result)
+0000ff 2700                      	clr mpr
+000100 930d                      	st X+, mpr
+000101 930d                      	st X+, mpr
+000102 930d                      	st X+, mpr
+000103 930d                      	st X+, mpr
+                                 
+                                 	;load Radius and 40 to MUL16 (Radius * 4 * 10)
+000104 e0b2                      	ldi XH, high(Radius)
+000105 e1a0                      	ldi XL, low(Radius)
+000106 ebc0                      	ldi YL, low(MUL16_OP1)
+000107 e0d2                      	ldi YH, high(MUL16_OP1)
+                                 
+000108 910d                      	ld mpr, X+
+000109 9309                      	st Y+, mpr
+00010a 910d                      	ld mpr, X+
+00010b 9309                      	st Y+, mpr
+                                 
+00010c ebc2                      	ldi YL, low(MUL16_OP2)
+00010d e0d2                      	ldi YH, high(MUL16_OP2)
+                                 
+00010e e208                      	ldi mpr, $28
+00010f 9309                      	st Y+, mpr
+000110 2700                      	clr mpr
+000111 9309                      	st Y+, mpr
+                                 
+                                 	;Calculate Radius * 40
+000112 940e 042f                 	call MUL16
+                                 
+                                 	;get second result from MUL16 into OP2 of MUL32
+                                 
+000114 e9c4                      	ldi YL, low(MUL32_OP2)
+000115 e0d2                      	ldi YH, high(MUL32_OP2)
+000116 e0b2                      	ldi XH, high(MUL16_Result)
+000117 eca0                      	ldi XL, low(MUL16_Result)
+                                 
+000118 910d                      	ld mpr, X+
+000119 9309                      	st Y+, mpr
+00011a 910d                      	ld mpr, X+
+00011b 9309                      	st Y+, mpr
+00011c 910d                      	ld mpr, X+
+00011d 9309                      	st Y+, mpr
+00011e 910d                      	ld mpr, X+
+00011f 9309                      	st Y+, mpr
+                                 
+                                 	;Calculate 56-bit product using MUL32 (32*32-bit multiplication)
+000120 940e 03f0                 	call MUL32
+                                 
+                                 	;
+                                 	;	Loading Values for Period Calculation (Quotient Calculation)
+                                 	;
+                                 
+000122 e0be                      	ldi XH, high(Product)
+000123 e0a5                      	ldi XL, low(Product)
+                                 	
+000124 e0f2                      	ldi ZH, high(DIV64_OP1)
+000125 ede0                      	ldi ZL, low(DIV64_OP1)
+                                 
+000126 910d                      	ld mpr, X+
+000127 9301                      	st Z+, mpr
+000128 910d                      	ld mpr, X+
+000129 9301                      	st Z+, mpr
+00012a 910d                      	ld mpr, X+
+00012b 9301                      	st Z+, mpr
+00012c 910d                      	ld mpr, X+
+00012d 9301                      	st Z+, mpr
+00012e 910d                      	ld mpr, X+
+00012f 9301                      	st Z+, mpr
+000130 910d                      	ld mpr, X+
+000131 9301                      	st Z+, mpr
+000132 910d                      	ld mpr, X+
+000133 9301                      	st Z+, mpr
+                                 
+000134 e0f2                      	ldi ZH, high(DIV64_OP2)
+000135 ede8                      	ldi ZL, low(DIV64_OP2)
+000136 e0b2                      	ldi XH, high(PlanetGM)
+000137 e0a0                      	ldi XL, low(PlanetGM)
+                                 	
+000138 910d                      	ld mpr, X+
+000139 9301                      	st Z+, mpr
+00013a 910d                      	ld mpr, X+
+00013b 9301                      	st Z+, mpr
+00013c 910d                      	ld mpr, X+
+00013d 9301                      	st Z+, mpr
+00013e 910d                      	ld mpr, X+
+00013f 9301                      	st Z+, mpr
+000140 2700                      	clr mpr
+000141 9301                      	st Z+, mpr
+000142 9301                      	st Z+, mpr
+000143 9301                      	st Z+, mpr
+                                 
+                                 	;calculate quotient
+000144 940e 02fa                 	call DIV64
+                                 
+                                 	;
+                                 	;	Loading values for squared root of product/GM
+                                 	;
+                                 
+                                 	;get value from quotient and load into squared root
+000146 e0b2                      	ldi XH, high(DIV64_Result)
+000147 eea0                      	ldi XL, low(DIV64_Result)
+000148 e0d2                      	ldi YH, high(SQRT_64_VAL)
+000149 e6c0                      	ldi YL, low(SQRT_64_VAL)
+                                 
+00014a 910d                      	ld mpr, X+
+00014b 9309                      	st Y+, mpr
+00014c 910d                      	ld mpr, X+
+00014d 9309                      	st Y+, mpr
+00014e 910d                      	ld mpr, X+
+00014f 9309                      	st Y+, mpr
+000150 910d                      	ld mpr, X+
+000151 9309                      	st Y+, mpr
+000152 910d                      	ld mpr, X+
+000153 9309                      	st Y+, mpr
+000154 910d                      	ld mpr, X+
+000155 9309                      	st Y+, mpr
+000156 910d                      	ld mpr, X+
+000157 9309                      	st Y+, mpr
+000158 910d                      	ld mpr, X+
+000159 9309                      	st Y+, mpr
+                                 
+00015a 940e 048f                 	call sqrt_64
+                                 
+                                 	;
+                                 	;	Check to see if period is less than 25s
+                                 	;
+                                 
+00015c e0b3                      	ldi XH, high(SQRT_64_CNT)
+00015d efa0                      	ldi XL, low(SQRT_64_CNT)
+00015e e0d1                      	ldi YH, high(COMPARE_PERIOD)
+00015f e0c6                      	ldi YL, low(COMPARE_PERIOD)
+                                 
+                                 	;	Checks if the value in X is less than the value in Y (24-bits)
+                                 	;	It will set the carry flag if X is less than Y, o.w. cleared
+000160 940e 0241                 	call COMPARE_24
+000162 f448                      	brcc P_greater_25
+                                 
+                                 	;store -2 to Period
+000163 ef0e                      	ldi mpr, $FE
+000164 e0ac                      	ldi XL, low(Period)
+000165 e0be                      	ldi XH, high(Period)
+                                 
+000166 930d                      	st X+, mpr
+000167 ef0f                      	ldi mpr, $FF
+000168 930d                      	st X+, mpr
+000169 930d                      	st X+, mpr
+                                 	
+00016a 940c 04ec                 	jmp	Grading
+                                 	P_greater_25:
+                                 
+00016c 940c 04ec                 	jmp	Grading				; this should be the very last instruction of your code
+                                 
+                                 ;-----------------------------------------------------------
+                                 ;	Procedures and Subroutines
+                                 ;-----------------------------------------------------------
+                                 
+                                 ;
+                                 ;	BEGINNING OF PART 1 PROCEDURES
+                                 ;
+                                 
+                                 ;
+                                 ;	DIV32
+                                 ;	Divides DIV32_OP1 by DIV32_OP2, essentially 32-bit divided by 16-bit
+                                 ;	Outputs result to DIV32_Result after rounding
+                                 ;	based on algorithm found @ http://www.rjhcoding.com/avr-asm-8bit-division.php
+                                 ;	for 8-bit division, and adapted for 32 / 16 bits.
+                                 ;
+                                 
+                                 DIV32:
+00016e 93bf                      	push XH
+00016f 93af                      	push XL
+000170 93df                      	push YH
+000171 93cf                      	push YL
+000172 93ff                      	push ZH
+000173 93ef                      	push ZL
+                                 
+000174 920f                      	push r0 ;ans
+000175 921f                      	push r1
+000176 922f                      	push r2
+000177 923f                      	push r3
+                                 	
+000178 928f                      	push r8 ;rem
+000179 929f                      	push r9
+00017a 92af                      	push r10
+00017b 92bf                      	push r11
+                                 	
+00017c 930f                      	push r16 ;divisor
+00017d 931f                      	push r17
+                                 	
+00017e 932f                      	push r18
+00017f 933f                      	push r19
+                                 
+000180 935f                      	push r21
+000181 936f                      	push r22
+                                 
+000182 2777                              clr ZERO
+                                 
+000183 2400                      		clr r0
+000184 2411                      		clr r1
+000185 2422                      		clr r2
+000186 2433                      		clr r3
+000187 2488                      		clr r8
+000188 2499                      		clr r9
+000189 24aa                      		clr r10
+00018a 24bb                      		clr r11
+00018b 2700                      		clr r16
+00018c 2711                      		clr r17
+00018d 2722                      		clr r18
+00018e 2733                      		clr r19
+00018f 2755                      		clr r21
+000190 2766                      		clr r22
+                                         
+                                 		;copy dividend to answer, r0:r3
+000191 e0b2                      		ldi XH, high(DIV32_OP1)
+000192 e2a0                      		ldi XL, low(DIV32_OP1)
+000193 900d                      		ld r0, X+
+000194 901d                      		ld r1, X+
+000195 902d                      		ld r2, X+
+000196 903d                      		ld r3, X+
+                                 
+                                 		;loading divisor to registers
+000197 e0b2                      		ldi XH, high(DIV32_OP2)
+000198 e2a4                      		ldi XL, low(DIV32_OP2)
+000199 910d                      		ld r16, X+
+00019a 911d                      		ld r17, X+
+                                 
+                                 restart_32:
+                                 		
+                                 		;Load bit counter for 33 iterations (32-bits + carry)
+00019b e261                              ldi r22,33
+                                 
+                                 		;Clear Remainder and Carry
+00019c 1888                              sub r8,r8 
+00019d 2499                              clr r9
+00019e 24aa                              clr r10
+00019f 24bb                              clr r11
+                                 
+                                 LOOP32:   
+                                 		;Shift the answer to the left
+0001a0 1c00                      		rol r0         
+0001a1 1c11                              rol r1          
+0001a2 1c22                              rol r2          
+0001a3 1c33                              rol r3         
+                                         
+                                 		;Decrement Counter
+0001a4 956a                      		dec r22
+                                 		
+                                 		;Exit if 32 bits done
+0001a5 f089                              breq DONE32
+                                         
+                                 		;Shift remainder to the left
+0001a6 1c88                      		rol r8          
+0001a7 1c99                              rol r9          
+0001a8 1caa                              rol r10          
+0001a9 1cbb                              rol r11          
+                                 
+                                 		;Try to subtract divisor from remainder
+0001aa 1a80                              sub r8,r16
+0001ab 0a91                              sbc r9,r17       
+0001ac 0aa7                              sbc r10,ZERO     
+0001ad 0ab7                              sbc r11,ZERO     
+                                         
+                                 		;If the result was negative then
+                                 		;reverse the subtraction to divide again
+0001ae f430                      		brcc SKIP32  
+                                         
+0001af 0e80                      		add r8,r16 
+0001b0 1e91                              adc r9,r17       
+0001b1 1ea7                              adc r10,ZERO 
+0001b2 1eb7                              adc r11,ZERO
+                                 
+                                 		;Clear Carry Flag so zero shifted into result
+0001b3 9488                              clc             
+                                         
+0001b4 cfeb                      		RJMP LOOP32        ;Loop Back
+                                 SKIP32:   
+                                 		;Set Carry Flag to be shifted into result
+0001b5 9408                      		SEC               
+                                          
+0001b6 cfe9                      		RJMP LOOP32
+                                 DONE32:
+                                 	;get remainder, and result and save to memory (increment the value already there)
+                                 	;check if remainder is greater than divisor, if it is, divide again, else, return
+                                 
+                                 	;add result to the result stored in memory
+0001b7 e0b2                      	ldi XH, high(DIV32_Result)
+0001b8 e2a8                      	ldi XL, low(DIV32_Result)
+                                 	
+0001b9 915c                      	ld r21, X
+0001ba 0d50                      	add r21, r0
+0001bb 935d                      	st X+, r21
+0001bc 915c                      	ld r21, X
+0001bd 1d51                      	adc r21, r1
+0001be 935d                      	st X+, r21
+0001bf 915c                      	ld r21, X
+0001c0 1d52                      	adc r21, r2
+0001c1 935d                      	st X+, r21
+0001c2 915c                      	ld r21, X
+0001c3 1d53                      	adc r21, r3
+0001c4 935d                      	st X+, r21
+                                 
+                                 	;update the remainder
+0001c5 e0b2                      	ldi XH, high(DIV32_Rem)
+0001c6 e2ab                      	ldi XL, low(DIV32_Rem)
+0001c7 928d                      	st X+, r8
+0001c8 929d                      	st X+, r9
+0001c9 92ad                      	st X+, r10
+0001ca 92bd                      	st X+, r11
+                                 
+                                 	;prepare to compare remainder and divisor
+0001cb e0b2                      	ldi XH, high(DIV32_Rem)
+0001cc e2ab                      	ldi XL, low(DIV32_Rem)
+0001cd e0d2                      	ldi YH, high(DIV32_OP2)
+0001ce e2c4                      	ldi YL, low(DIV32_OP2)
+                                 
+                                 	;	Checks if the value in X is less than the value in Y (64-bits)
+                                 	;	It will set the carry flag if X is less than Y, o.w. cleared
+0001cf 940e 0224                 	call COMPARE_32
+0001d1 f058                      	brcs get_div32_remainder
+0001d2 f051                      	breq get_div32_remainder
+                                 
+                                 	;the remainder is still greater than the divisor
+                                 
+                                 	;load remainder into result
+0001d3 2c08                      	mov r0, r8
+0001d4 2c19                      	mov r1, r9
+0001d5 2c2a                      	mov r2, r10
+0001d6 2c3b                      	mov r3, r11
+                                 
+0001d7 2488                      	clr r8
+0001d8 2499                      	clr r9
+0001d9 24aa                      	clr r10
+0001da 24bb                      	clr r11
+                                 
+                                 	;divide again
+0001db 940c 019b                 	jmp restart_32
+                                 
+                                 	get_div32_remainder:
+                                 
+                                 	;divide divisor by 2
+0001dd 9516                      	lsr r17
+0001de 9507                      	ror r16
+                                 
+0001df e0d2                      	ldi YH, high(DIV32_OP2)
+0001e0 e2c4                      	ldi YL, low(DIV32_OP2)
+0001e1 9309                      	st Y+, r16
+0001e2 9319                      	st Y+, r17
+                                 
+                                 	;check if remainder is less than half of the divisor	
+0001e3 e0b2                      	ldi XH, high(DIV32_Rem)
+0001e4 e2ab                      	ldi XL, low(DIV32_Rem)
+0001e5 e0d2                      	ldi YH, high(DIV32_OP2)
+0001e6 e2c4                      	ldi YL, low(DIV32_OP2)
+                                 
+                                 	;	Checks if the value in X is less than the value in Y (64-bits)
+                                 	;	It will set the carry flag if X is less than Y, o.w. cleared
+0001e7 940e 0224                 	call COMPARE_32
+0001e9 f088                      	brcs return_32
+                                 
+0001ea 2700                      	clr mpr
+0001eb 2733                      	clr r19
+0001ec e0b2                      	ldi XH, high(DIV32_Result)
+0001ed e2a8                      	ldi XL, low(DIV32_Result)
+                                 	
+0001ee e031                      	ldi r19, 1
+                                 	
+0001ef 910c                      	ld mpr, X
+0001f0 0f03                      	add mpr, r19
+0001f1 930d                      	st X+, mpr
+0001f2 910c                      	ld mpr, X
+0001f3 1f07                      	adc mpr, zero
+0001f4 930d                      	st X+, mpr
+0001f5 910c                      	ld mpr, X
+0001f6 1f07                      	adc mpr, zero
+0001f7 930d                      	st X+, mpr
+0001f8 910c                      	ld mpr, X
+0001f9 1f07                      	adc mpr, zero
+0001fa 930d                      	st X+, mpr
+                                 
+                                 	return_32:
+0001fb 916f                      	pop r22
+0001fc 915f                      	pop r21
+0001fd 913f                      	pop r19
+0001fe 912f                      	pop r18
+0001ff 911f                      	pop r17
+000200 910f                      	pop r16
+000201 90bf                      	pop r11
+000202 90af                      	pop r10
+000203 909f                      	pop r9
+000204 908f                      	pop r8
+000205 903f                      	pop r3
+000206 902f                      	pop r2
+000207 901f                      	pop r1
+000208 900f                      	pop r0
+000209 91ef                      	pop ZL
+00020a 91ff                      	pop ZH
+00020b 91cf                      	pop YL
+00020c 91df                      	pop YH
+00020d 91af                      	pop XL
+00020e 91bf                      	pop XH
+00020f 9508                      	ret
+                                 
+                                 ;
+                                 ;	clear_ops_32
+                                 ;	clears operands in X and Y for 32-bits
+                                 ;
+                                 clear_ops_32:
+000210 930f                      	push mpr
+000211 93af                      	push XL
+000212 93bf                      	push XH
+000213 93df                      	push YH
+000214 93cf                      	push YL
+                                 
+000215 2700                      	clr mpr
+000216 930d                      	st X+, mpr
+000217 930d                      	st X+, mpr
+000218 930d                      	st X+, mpr
+000219 930d                      	st X+, mpr
+00021a 9309                      	st Y+, mpr
+00021b 9309                      	st Y+, mpr
+00021c 9309                      	st Y+, mpr
+00021d 9309                      	st Y+, mpr
+                                 
+00021e 91cf                      	pop YL
+00021f 91df                      	pop YH
+000220 91bf                      	pop XH
+000221 91af                      	pop XL
+000222 910f                      	pop mpr
+000223 9508                      	ret
+                                 
+                                 ;
+                                 ;	COMPARE32
+                                 ;	Checks if the value in X is less than the value in Y (32-bits)
+                                 ;	It will set the carry flag if X is less than Y, o.w. cleared
+                                 ;
+                                 COMPARE_32:
+000224 93bf                      	push XH
+000225 93af                      	push XL
+000226 93df                      	push YH
+000227 93cf                      	push YL
+000228 93ff                      	push ZH
+000229 93ef                      	push ZL
+00022a 930f                      	push mpr
+00022b 933f                      	push r19
+                                 
+00022c 910d                      	ld mpr, X+
+00022d 9139                      	ld r19, Y+
+00022e 1703                      	cp mpr, r19
+00022f 910d                      	ld mpr, X+
+000230 9139                      	ld r19, Y+
+000231 0703                      	cpc mpr, r19
+000232 910d                      	ld mpr, X+
+000233 9139                      	ld r19, Y+
+000234 0703                      	cpc mpr, r19
+000235 910d                      	ld mpr, X+
+000236 9139                      	ld r19, Y+
+000237 0703                      	cpc mpr, r19
+                                 
+                                 	;carry flag cleared means that the result is larger than the divisor
+                                 
+000238 913f                      	pop r19
+000239 910f                      	pop mpr
+00023a 91ef                      	pop ZL
+00023b 91ff                      	pop ZH
+00023c 91cf                      	pop YL
+00023d 91df                      	pop YH
+00023e 91af                      	pop XL
+00023f 91bf                      	pop XH
+000240 9508                      	ret
+                                 
+                                 ;
+                                 ;	COMPARE24
+                                 ;	Checks if the value in X is less than the value in Y (24-bits)
+                                 ;	It will set the carry flag if X is less than Y, o.w. cleared
+                                 ;
+                                 COMPARE_24:
+000241 93bf                      	push XH
+000242 93af                      	push XL
+000243 93df                      	push YH
+000244 93cf                      	push YL
+000245 93ff                      	push ZH
+000246 93ef                      	push ZL
+000247 930f                      	push mpr
+000248 933f                      	push r19
+                                 
+000249 910d                      	ld mpr, X+
+00024a 9139                      	ld r19, Y+
+00024b 1703                      	cp mpr, r19
+00024c 910d                      	ld mpr, X+
+00024d 9139                      	ld r19, Y+
+00024e 0703                      	cpc mpr, r19
+00024f 910d                      	ld mpr, X+
+000250 9139                      	ld r19, Y+
+000251 0703                      	cpc mpr, r19
+                                 
+                                 	;carry flag cleared means that the result is larger than the divisor
+                                 
+000252 913f                      	pop r19
+000253 910f                      	pop mpr
+000254 91ef                      	pop ZL
+000255 91ff                      	pop ZH
+000256 91cf                      	pop YL
+000257 91df                      	pop YH
+000258 91af                      	pop XL
+000259 91bf                      	pop XH
+00025a 9508                      	ret
+                                 ;
+                                 ;	COMPARE16
+                                 ;	Checks if the value in X is less than the value in Y (16-bits)
+                                 ;	It will set the carry flag if X is less than Y, o.w. cleared
+                                 ;
+                                 COMPARE_16:
+00025b 93bf                      	push XH
+00025c 93af                      	push XL
+00025d 93df                      	push YH
+00025e 93cf                      	push YL
+00025f 930f                      	push mpr
+000260 933f                      	push r19
+                                 
+000261 910d                      	ld mpr, X+
+000262 9139                      	ld r19, Y+
+000263 1703                      	cp mpr, r19
+000264 910d                      	ld mpr, X+
+000265 9139                      	ld r19, Y+
+000266 0703                      	cpc mpr, r19
+                                 
+                                 	;carry flag cleared means that the result is larger than the divisor
+                                 
+000267 913f                      	pop r19
+000268 910f                      	pop mpr
+000269 91cf                      	pop YL
+00026a 91df                      	pop YH
+00026b 91af                      	pop XL
+00026c 91bf                      	pop XH
+00026d 9508                      	ret
+                                 
+                                 ;
+                                 ;	sqrt_32
+                                 ;	Calculates the squared root of SQRT_32_VAL
+                                 ;	for 32-bit values (returns up to 24-bits)
+                                 ;
+                                 sqrt_32:
+00026e 930f                      	push mpr
+00026f 932f                      	push r18
+000270 931f                      	push r17
+                                 
+000271 2700                      	clr mpr
+000272 2722                      	clr r18
+000273 2711                      	clr r17
+                                 
+                                 
+                                 	sqrt_32_BEG:
+                                 	;increment 24-bit number
+000274 940e 02ae                 	call INC_24_sqrt_32
+                                 
+000276 e0b2                      	ldi XH, high(MUL24_OP2)
+000277 e7a3                      	ldi XL, low(MUL24_OP2)
+000278 e0d2                      	ldi YH, high(MUL24_OP1)
+000279 e7c0                      	ldi YL, low(MUL24_OP1)
+00027a e0f2                      	ldi ZH, high(SQRT_32_CNT)
+00027b e5e0                      	ldi ZL, low(SQRT_32_CNT)
+00027c 940e 0210                 	call clear_ops_32
+                                 
+00027e 9101                      	ld mpr, Z+
+00027f 9309                      	st Y+, mpr
+000280 930d                      	st X+, mpr
+000281 9101                      	ld mpr, Z+
+000282 9309                      	st Y+, mpr
+000283 930d                      	st X+, mpr
+000284 9101                      	ld mpr, Z+
+000285 9309                      	st Y+, mpr
+000286 930d                      	st X+, mpr
+                                 
+000287 930f                      	push mpr
+000288 e0f2                      	ldi ZH, high(MUL24_Result)
+000289 e8e0                      	ldi ZL, low(MUL24_Result)
+00028a 2700                      	clr mpr
+00028b 9301                      	st Z+, mpr
+00028c 9301                      	st Z+, mpr
+00028d 9301                      	st Z+, mpr
+00028e 9301                      	st Z+, mpr
+00028f 9301                      	st Z+, mpr
+000290 9301                      	st Z+, mpr
+000291 910f                      	pop mpr
+                                 
+                                 	;square the number
+000292 940e 02c0                 	call MUL24
+                                 
+                                 	;check if X is less than Y
+000294 e0b2                      	ldi XH, high(MUL24_Result)
+000295 e8a0                      	ldi XL, low(MUL24_Result)
+000296 e0d2                      	ldi YH, high(SQRT_32_VAL)
+000297 e6c0                      	ldi YL, low(SQRT_32_VAL)
+                                 	
+                                 	;	Checks if the value in X is less than the value in Y (32-bits)
+                                 	;	It will set the carry flag if X is less than Y, o.w. cleared
+000298 940e 0224                 	call COMPARE_32
+00029a f2c8                      	brcs sqrt_32_BEG
+                                 
+                                 	;here the count is one too large, subtract 1 from count
+00029b e0b2                      	ldi XH, high(SQRT_32_CNT)
+00029c e5a0                      	ldi XL, low(SQRT_32_CNT)
+                                 
+00029d e0fe                      	ldi ZH, high(Velocity)
+00029e e0e3                      	ldi ZL, low(Velocity)
+                                 	
+00029f 911d                      	ld r17, X+	; Load (X) to R17
+0002a0 e021                      	ldi r18, 1
+0002a1 1b12                      	sub R17,R18 ; Rsubtract
+0002a2 9311                      	st Z+, R17	; store result to (Z)
+                                 
+0002a3 911d                      	ld r17, X+	; Load (X) to R17
+0002a4 2722                      	clr r18
+0002a5 0b12                      	sbc R17,R18 ; Rsubtract
+0002a6 9311                      	st Z+, R17	; store result to (Z)
+                                 
+0002a7 911d                      	ld r17, X+	; Load (X) to R17
+0002a8 0b12                      	sbc R17,R18 ; Rsubtract
+0002a9 9311                      	st Z+, R17	; store result to (Z)
+                                 	sqrt_32_END:
+                                 
+0002aa 911f                      	pop r17
+0002ab 912f                      	pop r18
+0002ac 910f                      	pop mpr
+0002ad 9508                      	RET
+                                 
+                                 ;
+                                 ; INC_24_sqrt_32
+                                 ; Increments 24-bit number for squared root of a 32-bit value
+                                 ;
+                                 INC_24_sqrt_32:
+0002ae 930f                      	push mpr
+0002af 933f                      	push r19
+                                 	
+0002b0 e0b2                      	ldi XH, high(SQRT_32_CNT)
+0002b1 e5a0                      	ldi XL, low(SQRT_32_CNT)
+0002b2 e031                      	ldi r19, 1
+                                 
+0002b3 910c                      	ld mpr, X
+0002b4 0f03                      	add mpr, r19
+0002b5 930d                      	st X+, mpr
+0002b6 2733                      	clr r19
+                                 
+0002b7 910c                      	ld mpr, X
+0002b8 1f03                      	adc mpr, r19
+0002b9 930d                      	st X+, mpr
+                                 	
+0002ba 910c                      	ld mpr, X
+0002bb 1f03                      	adc mpr, r19
+0002bc 930d                      	st X+, mpr
+                                 
+0002bd 913f                      	pop r19
+0002be 910f                      	pop mpr
+0002bf 9508                      	ret
+                                 
+                                 ;-----------------------------------------------------------
+                                 ; Func: MUL24
+                                 ; Desc: Multiplies two 24-bit numbers and generates a 48-bit 
+                                 ;		result.
+                                 ;-----------------------------------------------------------
+                                 MUL24:
+                                 		; Execute the function here
+0002c0 923f                      		push 	A				; Save A register
+0002c1 924f                      		push	B				; Save B register
+0002c2 921f                      		push	rhi				; Save rhi register
+0002c3 920f                      		push	rlo				; Save rlo register
+0002c4 937f                      		push	zero			; Save zero register
+0002c5 93bf                      		push	XH				; Save X-ptr
+0002c6 93af                      		push	XL
+0002c7 93df                      		push	YH				; Save Y-ptr
+0002c8 93cf                      		push	YL				
+0002c9 93ff                      		push	ZH				; Save Z-ptr
+0002ca 93ef                      		push	ZL
+0002cb 931f                      		push	oloop			; Save counters
+0002cc 932f                      		push	iloop				
+                                 
+0002cd 2777                      		clr		zero			; Maintain zero semantics
+                                 
+                                 		; Set Y to beginning address of B
+0002ce e7c0                      		ldi		YL, low(MUL24_OP1)	; Load low byte
+0002cf e0d2                      		ldi		YH, high(MUL24_OP1)	; Load high byte
+                                 
+                                 		; Set Z to begginning address of resulting Product
+0002d0 e8e0                      		ldi		ZL, low(MUL24_Result)	; Load low byte
+0002d1 e0f2                      		ldi		ZH, high(MUL24_Result); Load high byte
+                                 
+                                 		; Begin outer for loop
+0002d2 e013                      		ldi		oloop, 3		; Load counter
+                                 MUL24_OLOOP:
+                                 		; Set X to beginning address of A
+0002d3 e7a3                      		ldi		XL, low(MUL24_OP2)	; Load low byte
+0002d4 e0b2                      		ldi		XH, high(MUL24_OP2)	; Load high byte
+                                 
+                                 		; Begin inner for loop
+0002d5 e023                      		ldi		iloop, 3		; Load counter
+                                 MUL24_ILOOP:
+0002d6 903d                      		ld		A, X+			; Get byte of A operand
+0002d7 8048                      		ld		B, Y			; Get byte of B operand
+0002d8 9c34                      		mul		A,B				; Multiply A and B
+0002d9 9031                      		ld		A, Z+			; Get a result byte from memory
+0002da 9041                      		ld		B, Z+			; Get the next result byte from memory
+0002db 0c03                      		add		rlo, A			; rlo <= rlo + A
+0002dc 1c14                      		adc		rhi, B			; rhi <= rhi + B + carry
+0002dd 9031                      		ld		A, Z+			; Get a third byte from the result
+0002de 8130                      		ld		R19, Z			; Get the 4th byte
+0002df 1e37                      		adc		A, zero			; Add carry to A
+0002e0 1f37                      		adc		R19, zero		; Add carry to R19
+0002e1 8330                      		st		Z, R19			; Store fourth byte to memory
+0002e2 9232                      		st		-Z, A			; Store third byte to memory
+0002e3 9212                      		st		-Z, rhi			; Store second byte to memory
+0002e4 9202                      		st		-Z, rlo			; Store first byte to memory
+0002e5 9631                      		adiw	ZH:ZL, 1		; Z <= Z + 1			
+0002e6 952a                      		dec		iloop			; Decrement counter
+0002e7 f771                      		brne	MUL24_ILOOP		; Loop if iLoop != 0
+                                 		; End inner for loop
+                                 
+0002e8 9732                      		sbiw	ZH:ZL, 2		; Z <= Z - 2
+0002e9 9621                      		adiw	YH:YL, 1		; Y <= Y + 1
+0002ea 951a                      		dec		oloop			; Decrement counter
+0002eb f739                      		brne	MUL24_OLOOP		; Loop if oLoop != 0
+                                 		; End outer for loop
+                                 		 		
+0002ec 912f                      		pop		iloop			; Restore all registers in reverves order
+0002ed 911f                      		pop		oloop
+0002ee 91ef                      		pop		ZL				
+0002ef 91ff                      		pop		ZH
+0002f0 91cf                      		pop		YL
+0002f1 91df                      		pop		YH
+0002f2 91af                      		pop		XL
+0002f3 91bf                      		pop		XH
+0002f4 917f                      		pop		zero
+0002f5 900f                      		pop		rlo
+0002f6 901f                      		pop		rhi
+0002f7 904f                      		pop		B
+0002f8 903f                      		pop		A
+                                 
+0002f9 9508                      		ret						; End a function with RET
+                                 
+                                 ;
+                                 ;	NO MORE PROCEDURES FOR PART 1 BELOW THIS POINT
+                                 ;	BEGINNING OF PART 2 PROCEDURES
+                                 ;
+                                 
+                                 ;
+                                 ;	DIV64
+                                 ;	Divides DIV64_OP1 by DIV64_OP2 (OP1 up to 64-bits, OP2 up to 32-bits)
+                                 ;	Outputs result to DIV64_Result after rounding
+                                 ;	based on algorithm found @ http://www.rjhcoding.com/avr-asm-8bit-division.php
+                                 ;	for 8-bit division, and adapted for 64 / 32 bits.
+                                 ;
+                                 DIV64:
+0002fa 93bf                      	push XH
+0002fb 93af                      	push XL
+0002fc 93df                      	push YH
+0002fd 93cf                      	push YL
+0002fe 93ff                      	push ZH
+0002ff 93ef                      	push ZL
+                                 
+000300 920f                      	push r0 ;ans
+000301 921f                      	push r1
+000302 922f                      	push r2
+000303 923f                      	push r3
+000304 924f                      	push r4
+000305 925f                      	push r5
+000306 926f                      	push r6
+000307 927f                      	push r7 
+                                 	
+000308 928f                      	push r8 ;rem
+000309 929f                      	push r9
+00030a 92af                      	push r10
+00030b 92bf                      	push r11
+00030c 92cf                      	push r12
+00030d 92df                      	push r13
+00030e 92ef                      	push r14
+00030f 92ff                      	push r15
+                                 	
+000310 930f                      	push r16 ;divisor
+000311 931f                      	push r17
+000312 932f                      	push r18
+000313 933f                      	push r19
+                                 
+000314 935f                      	push r21
+000315 936f                      	push r22
+                                 
+000316 2777                              clr ZERO
+                                 
+                                 		;clear all registers that are going to be used
+000317 2400                      		clr r0
+000318 2411                      		clr r1
+000319 2422                      		clr r2
+00031a 2433                      		clr r3
+00031b 2444                      		clr r4
+00031c 2455                      		clr r5
+00031d 2466                      		clr r6
+00031e 2477                      		clr r7
+00031f 2488                      		clr r8
+000320 2499                      		clr r9
+000321 24aa                      		clr r10
+000322 24bb                      		clr r11
+000323 24cc                      		clr r12
+000324 24dd                      		clr r13
+000325 24ee                      		clr r14
+000326 24ff                      		clr r15
+000327 2700                      		clr r16
+000328 2711                      		clr r17
+000329 2722                      		clr r18
+00032a 2755                      		clr r21
+00032b 2766                      		clr r22
+                                         ;copy dividend to answer, r0:r7
+                                 
+00032c e0b2                      		ldi XH, high(DIV64_OP1)
+00032d eda0                      		ldi XL, low(DIV64_OP1)
+00032e 900d                      		ld r0, X+
+00032f 901d                      		ld r1, X+
+000330 902d                      		ld r2, X+
+000331 903d                      		ld r3, X+
+000332 904d                      		ld r4, X+
+000333 905d                      		ld r5, X+
+000334 906d                      		ld r6, X+
+000335 907d                      		ld r7, X+
+                                 
+                                 		;loading divisor to registers
+000336 e0b2                      		ldi XH, high(DIV64_OP2)
+000337 eda8                      		ldi XL, low(DIV64_OP2)
+000338 910d                      		ld r16, X+
+000339 911d                      		ld r17, X+
+00033a 912d                      		ld r18, X+
+00033b 913d                      		ld r19, X+
+                                 
+                                 restart_64:
+00033c e461                              ldi r22,65          ;Load bit counter for 64-bits
+00033d 1888                              sub r8,r8		  ;Clear Remainder and Carry
+00033e 2499                              clr r9
+00033f 24aa                              clr r10        
+000340 24bb                              clr r11       
+000341 24cc                      		clr r12
+000342 24dd                      		clr r13
+000343 24ee                      		clr r14
+000344 24ff                      		clr r15
+                                 
+000345 1c00                      LOOP_64:   rol r0          ;Shift the answer to the left
+000346 1c11                              rol r1          
+000347 1c22                              rol r2          
+000348 1c33                              rol r3          
+000349 1c44                      		rol r4
+00034a 1c55                      		rol r5
+00034b 1c66                      		rol r6
+00034c 1c77                      		rol r7
+                                 
+                                 		;decrement counter
+00034d 956a                              dec r22     
+00034e f0e9                              breq DONE_64        ;Exit loop if 64 bits are done
+                                 
+00034f 1c88                              rol r8				;Shift remainder to the left
+000350 1c99                              rol r9			
+000351 1caa                              rol r10         
+000352 1cbb                              rol r11         
+000353 1ccc                      		rol r12
+000354 1cdd                      		rol r13
+000355 1cee                      		rol r14
+000356 1cff                      		rol r15
+                                 
+000357 1a80                              sub r8, r16       ;subtract divisor from remainder
+000358 0a91                      		sbc r9, r17
+000359 0aa2                      		sbc r10, r18
+00035a 0ab3                      		sbc r11, r19
+00035b 0ac7                      		sbc r12, zero
+00035c 0ad7                      		sbc r13, zero
+00035d 0ae7                      		sbc r14, zero
+00035e 0af7                      		sbc r15, zero
+                                 
+00035f f450                              BRCC SKIP_64        ;If the result was negative
+                                         
+000360 0e80                      		add r8, r16			;go back and undo subtraction
+000361 1e91                      		adc r9, r17
+000362 1ea2                      		adc r10, r18
+000363 1eb3                      		adc r11, r19
+000364 1ec7                      		adc r12, zero
+000365 1ed7                      		adc r13, zero
+000366 1ee7                      		adc r14, zero
+000367 1ef7                      		adc r15, zero
+                                 
+000368 9488                              CLC					 ;Clear Carry Flag so zero shifted into result 
+000369 cfdb                               RJMP LOOP_64        ;Loop Back
+00036a 9408                      SKIP_64:   SEC               ;Set Carry Flag to be shifted into result
+00036b cfd9                               RJMP LOOP_64		 ;loop back
+                                 DONE_64:
+                                 
+                                 	;get remainder, and result and save to memory (increment the value already there)
+                                 	;check if remainder is greater than divisor, if it is, divide again, else, return
+                                 
+                                 	;add result to the result stored in memory
+00036c e0b2                      	ldi XH, high(DIV64_Result)
+00036d eea0                      	ldi XL, low(DIV64_Result)
+                                 	
+00036e 915c                      	ld r21, X
+00036f 0d50                      	add r21, r0
+000370 935d                      	st X+, r21
+000371 915c                      	ld r21, X
+000372 1d51                      	adc r21, r1
+000373 935d                      	st X+, r21
+000374 915c                      	ld r21, X
+000375 1d52                      	adc r21, r2
+000376 935d                      	st X+, r21
+000377 915c                      	ld r21, X
+000378 1d53                      	adc r21, r3
+000379 935d                      	st X+, r21
+00037a 915c                      	ld r21, X
+00037b 1d54                      	adc r21, r4
+00037c 935d                      	st X+, r21
+00037d 915c                      	ld r21, X
+00037e 1d55                      	adc r21, r5
+00037f 935d                      	st X+, r21
+000380 915c                      	ld r21, X
+000381 1d56                      	adc r21, r6
+000382 935d                      	st X+, r21
+000383 915c                      	ld r21, X
+000384 1d57                      	adc r21, r7
+000385 935d                      	st X+, r21
+                                 
+                                 	;update remainder in memory
+000386 e0b2                      	ldi XH, high(DIV64_Rem)
+000387 efa0                      	ldi XL, low(DIV64_Rem)
+000388 928d                      	st X+, r8
+000389 929d                      	st X+, r9
+00038a 92ad                      	st X+, r10
+00038b 92bd                      	st X+, r11
+00038c 92cd                      	st X+, r12
+00038d 92dd                      	st X+, r13
+00038e 92ed                      	st X+, r14
+00038f 92fd                      	st X+, r15
+                                 
+000390 e0b2                      	ldi XH, high(DIV64_Rem)
+000391 efa0                      	ldi XL, low(DIV64_Rem)
+000392 e0d2                      	ldi YH, high(DIV64_OP2)
+000393 edc8                      	ldi YL, low(DIV64_OP2)
+                                 
+                                 	;	Checks if the value in X is less than the value in Y (64-bits)
+                                 	;	It will set the carry flag if X is less than Y, o.w. cleared
+000394 940e 0466                 	call COMPARE_64
+000396 f098                      	brcs get_div64_remainder
+000397 f091                      	breq get_div64_remainder
+                                 
+                                 	;the remainder is still greater than the divisor
+                                 
+                                 	;load remainder into result
+000398 2c08                      	mov r0, r8
+000399 2c19                      	mov r1, r9
+00039a 2c2a                      	mov r2, r10
+00039b 2c3b                      	mov r3, r11
+00039c 2c4c                      	mov r4, r12
+00039d 2c5d                      	mov r5, r13
+00039e 2c6e                      	mov r6, r14
+00039f 2c7f                      	mov r7, r15
+                                 
+0003a0 2488                      	clr r8
+0003a1 2499                      	clr r9
+0003a2 24aa                      	clr r10
+0003a3 24bb                      	clr r11
+0003a4 24cc                      	clr r12
+0003a5 24dd                      	clr r13
+0003a6 24ee                      	clr r14
+0003a7 24ff                      	clr r15
+0003a8 940c 033c                 	jmp restart_64
+                                 
+                                 	get_div64_remainder:
+                                 
+                                 	;divide divisor by 2
+0003aa 9536                      	lsr r19
+0003ab 9527                      	ror r18
+0003ac 9517                      	ror r17
+0003ad 9507                      	ror r16
+                                 
+0003ae e0d2                      	ldi YH, high(DIV64_OP2)
+0003af edc8                      	ldi YL, low(DIV64_OP2)
+0003b0 9309                      	st Y+, r16
+0003b1 9319                      	st Y+, r17
+0003b2 9329                      	st Y+, r18
+0003b3 9339                      	st Y+, r19
+                                 
+                                 	;check if remainder is less than half of the divisor	
+0003b4 e0b2                      	ldi XH, high(DIV64_Rem)
+0003b5 efa0                      	ldi XL, low(DIV64_Rem)
+0003b6 e0d2                      	ldi YH, high(DIV64_OP2)
+0003b7 edc8                      	ldi YL, low(DIV64_OP2)
+                                 
+                                 	;	Checks if the value in X is less than the value in Y (64-bits)
+                                 	;	It will set the carry flag if X is less than Y, o.w. cleared
+0003b8 940e 0466                 	call COMPARE_64
+0003ba f0c0                      	brcs return_64
+                                 
+                                 	;clear registers to be used
+0003bb 2700                      	clr mpr
+0003bc 2733                      	clr r19
+0003bd 2777                      	clr zero
+                                 
+0003be e0b2                      	ldi XH, high(DIV64_Result)
+0003bf eea0                      	ldi XL, low(DIV64_Result)
+                                 	
+0003c0 e031                      	ldi r19, 1
+0003c1 910c                      	ld mpr, X
+0003c2 0f03                      	add mpr, r19
+0003c3 930d                      	st X+, mpr
+0003c4 910c                      	ld mpr, X
+0003c5 1f07                      	adc mpr, zero
+0003c6 930d                      	st X+, mpr
+0003c7 910c                      	ld mpr, X
+0003c8 1f07                      	adc mpr, zero
+0003c9 930d                      	st X+, mpr
+0003ca 910c                      	ld mpr, X
+0003cb 1f07                      	adc mpr, zero
+0003cc 930d                      	st X+, mpr
+0003cd 910c                      	ld mpr, X
+0003ce 1f07                      	adc mpr, zero
+0003cf 930d                      	st X+, mpr
+0003d0 910c                      	ld mpr, X
+0003d1 1f07                      	adc mpr, zero
+0003d2 930d                      	st X+, mpr
+                                 
+                                 	return_64:
+0003d3 916f                      	pop r22
+0003d4 915f                      	pop r21
+0003d5 913f                      	pop r19
+0003d6 912f                      	pop r18
+0003d7 911f                      	pop r17
+0003d8 910f                      	pop r16
+0003d9 90ff                      	pop r15
+0003da 90ef                      	pop r14
+0003db 90df                      	pop r13
+0003dc 90cf                      	pop r12
+0003dd 90bf                      	pop r11
+0003de 90af                      	pop r10
+0003df 909f                      	pop r9
+0003e0 908f                      	pop r8
+0003e1 907f                      	pop r7
+0003e2 906f                      	pop r6
+0003e3 905f                      	pop r5
+0003e4 904f                      	pop r4
+0003e5 903f                      	pop r3
+0003e6 902f                      	pop r2
+0003e7 901f                      	pop r1
+0003e8 900f                      	pop r0
+0003e9 91ef                      	pop ZL
+0003ea 91ff                      	pop ZH
+0003eb 91cf                      	pop YL
+0003ec 91df                      	pop YH
+0003ed 91af                      	pop XL
+0003ee 91bf                      	pop XH
+0003ef 9508                      	ret
+                                 
+                                 
+                                 ;-----------------------------------------------------------
+                                 ; Func: MUL32
+                                 ; Desc: Multiplies two 32-bit numbers and generates a 64-bit 
+                                 ;		result.
+                                 ;-----------------------------------------------------------
+                                 MUL32:
+                                 		; Execute the function here
+0003f0 923f                      		push 	A				; Save A register
+0003f1 924f                      		push	B				; Save B register
+0003f2 921f                      		push	rhi				; Save rhi register
+0003f3 920f                      		push	rlo				; Save rlo register
+0003f4 937f                      		push	zero			; Save zero register
+0003f5 93bf                      		push	XH				; Save X-ptr
+0003f6 93af                      		push	XL
+0003f7 93df                      		push	YH				; Save Y-ptr
+0003f8 93cf                      		push	YL				
+0003f9 93ff                      		push	ZH				; Save Z-ptr
+0003fa 93ef                      		push	ZL
+0003fb 931f                      		push	oloop			; Save counters
+0003fc 932f                      		push	iloop
+0003fd 934f                      		push	r20				
+                                 
+0003fe 2777                      		clr		zero			; Maintain zero semantics
+                                 
+                                 		; Set Y to beginning address of B
+0003ff e9c0                      		ldi		YL, low(MUL32_OP1)	; Load low byte
+000400 e0d2                      		ldi		YH, high(MUL32_OP1)	; Load high byte
+                                 
+                                 		; Set Z to begginning address of resulting Product
+000401 e0e5                      		ldi		ZL, low(Product)	; Load low byte
+000402 e0fe                      		ldi		ZH, high(Product); Load high byte
+                                 
+                                 		; Begin outer for loop
+000403 e014                      		ldi		oloop, 4		; Load counter
+                                 MUL32_OLOOP:
+                                 		; Set X to beginning address of A
+000404 e9a4                      		ldi		XL, low(MUL32_OP2)	; Load low byte
+000405 e0b2                      		ldi		XH, high(MUL32_OP2)	; Load high byte
+                                 
+                                 		; Begin inner for loop
+000406 e024                      		ldi		iloop, 4		; Load counter
+                                 MUL32_ILOOP:
+000407 903d                      		ld		A, X+			; Get byte of A operand
+000408 8048                      		ld		B, Y			; Get byte of B operand
+000409 9c34                      		mul		A,B				; Multiply A and B
+00040a 9031                      		ld		A, Z+			; Get a result byte from memory
+00040b 9041                      		ld		B, Z+			; Get the next result byte from memory
+00040c 0c03                      		add		rlo, A			; rlo <= rlo + A
+00040d 1c14                      		adc		rhi, B			; rhi <= rhi + B + carry
+00040e 9031                      		ld		A, Z+			; Get a third byte from the result
+00040f 9131                      		ld		R19, Z+			; Get the 4th byte
+000410 8140                      		ld		R20, Z			; Get the 5th byte
+000411 1e37                      		adc		A, zero			; Add carry to A
+000412 1f37                      		adc		R19, zero		; Add carry to R19
+000413 1f47                      		adc		R20, zero
+000414 8340                      		st		Z, R20			; Store fith byte to memory
+000415 9332                      		st		-Z, R19			; Store fourth byte to memory
+000416 9232                      		st		-Z, A			; Store third byte to memory
+000417 9212                      		st		-Z, rhi			; Store second byte to memory
+000418 9202                      		st		-Z, rlo			; Store first byte to memory
+000419 9631                      		adiw	ZH:ZL, 1		; Z <= Z + 1			
+00041a 952a                      		dec		iloop			; Decrement counter
+00041b f759                      		brne	MUL32_ILOOP		; Loop if iLoop != 0
+                                 		; End inner for loop
+                                 
+00041c 9733                      		sbiw	ZH:ZL, 3		; Z <= Z - 3
+00041d 9621                      		adiw	YH:YL, 1		; Y <= Y + 1
+00041e 951a                      		dec		oloop			; Decrement counter
+00041f f721                      		brne	MUL32_OLOOP		; Loop if oLoop != 0
+                                 		; End outer for loop
+                                 		 	
+000420 914f                      		pop		r20		
+000421 912f                      		pop		iloop			; Restore all registers in reverse order
+000422 911f                      		pop		oloop
+000423 91ef                      		pop		ZL				
+000424 91ff                      		pop		ZH
+000425 91cf                      		pop		YL
+000426 91df                      		pop		YH
+000427 91af                      		pop		XL
+000428 91bf                      		pop		XH
+000429 917f                      		pop		zero
+00042a 900f                      		pop		rlo
+00042b 901f                      		pop		rhi
+00042c 904f                      		pop		B
+00042d 903f                      		pop		A
+                                 
+00042e 9508                      		ret						; End a function with RET
+                                 
+                                 ;-----------------------------------------------------------
+                                 ; Func: MUL16
+                                 ; Desc: An example function that multiplies two 16-bit numbers
+                                 ;			A - Operand A
+                                 ;			B - Operand B
+                                 ;		You will need to make sure that Res is cleared before
+                                 ;		calling this function.
+                                 ;-----------------------------------------------------------
+                                 MUL16:
+00042f 923f                      		push 	A				; Save A register
+000430 924f                      		push	B				; Save B register
+000431 921f                      		push	rhi				; Save rhi register
+000432 920f                      		push	rlo				; Save rlo register
+000433 937f                      		push	zero			; Save zero register
+000434 93bf                      		push	XH				; Save X-ptr
+000435 93af                      		push	XL
+000436 93df                      		push	YH				; Save Y-ptr
+000437 93cf                      		push	YL				
+000438 93ff                      		push	ZH				; Save Z-ptr
+000439 93ef                      		push	ZL
+00043a 931f                      		push	oloop			; Save counters
+00043b 932f                      		push	iloop				
+                                 
+00043c 2777                      		clr		zero			; Maintain zero semantics
+                                 
+                                 		; Set Y to beginning address of B
+00043d ebc0                      		ldi		YL, low(MUL16_OP1)	; Load low byte
+00043e e0d2                      		ldi		YH, high(MUL16_OP1)	; Load high byte
+                                 
+                                 		; Set Z to beginning address of resulting Product
+00043f ece0                      		ldi		ZL, low(MUL16_Result)	; Load low byte
+000440 e0f2                      		ldi		ZH, high(MUL16_Result); Load high byte
+                                 
+                                 		; Begin outer for loop
+000441 e012                      		ldi		oloop, 2		; Load counter
+                                 MUL16_OLOOP:
+                                 		; Set X to beginning address of A
+000442 eba2                      		ldi		XL, low(MUL16_OP2)	; Load low byte
+000443 e0b2                      		ldi		XH, high(MUL16_OP2)	; Load high byte
+                                 
+                                 		; Begin inner for loop
+000444 e022                      		ldi		iloop, 2		; Load counter
+                                 MUL16_ILOOP:
+000445 903d                      		ld		A, X+			; Get byte of A operand
+000446 8048                      		ld		B, Y			; Get byte of B operand
+000447 9c34                      		mul		A,B				; Multiply A and B
+000448 9031                      		ld		A, Z+			; Get a result byte from memory
+000449 9041                      		ld		B, Z+			; Get the next result byte from memory
+00044a 0c03                      		add		rlo, A			; rlo <= rlo + A
+00044b 1c14                      		adc		rhi, B			; rhi <= rhi + B + carry
+00044c 8030                      		ld		A, Z			; Get a third byte from the result
+00044d 1e37                      		adc		A, zero			; Add carry to A
+00044e 8230                      		st		Z, A			; Store third byte to memory
+00044f 9212                      		st		-Z, rhi			; Store second byte to memory
+000450 9202                      		st		-Z, rlo			; Store first byte to memory
+000451 9631                      		adiw	ZH:ZL, 1		; Z <= Z + 1			
+000452 952a                      		dec		iloop			; Decrement counter
+000453 f789                      		brne	MUL16_ILOOP		; Loop if iLoop != 0
+                                 		; End inner for loop
+                                 
+000454 9731                      		sbiw	ZH:ZL, 1		; Z <= Z - 1
+000455 9621                      		adiw	YH:YL, 1		; Y <= Y + 1
+000456 951a                      		dec		oloop			; Decrement counter
+000457 f751                      		brne	MUL16_OLOOP		; Loop if oLoop != 0
+                                 		; End outer for loop
+                                 		 		
+000458 912f                      		pop		iloop			; Restore all registers in reverse order
+000459 911f                      		pop		oloop
+00045a 91ef                      		pop		ZL				
+00045b 91ff                      		pop		ZH
+00045c 91cf                      		pop		YL
+00045d 91df                      		pop		YH
+00045e 91af                      		pop		XL
+00045f 91bf                      		pop		XH
+000460 917f                      		pop		zero
+000461 900f                      		pop		rlo
+000462 901f                      		pop		rhi
+000463 904f                      		pop		B
+000464 903f                      		pop		A
+000465 9508                      		ret						; End a function with RET
+                                 
+                                 ;
+                                 ;	COMPARE64
+                                 ;	Checks if the value in X is less than the value in Y (64-bits)
+                                 ;	It will set the carry flag if X is less than Y, o.w. cleared
+                                 ;
+                                 COMPARE_64:
+000466 93bf                      	push XH
+000467 93af                      	push XL
+000468 93df                      	push YH
+000469 93cf                      	push YL
+00046a 93ff                      	push ZH
+00046b 93ef                      	push ZL
+00046c 930f                      	push mpr
+00046d 933f                      	push r19
+                                 
+00046e 910d                      	ld mpr, X+
+00046f 9139                      	ld r19, Y+
+000470 1703                      	cp mpr, r19
+000471 910d                      	ld mpr, X+
+000472 9139                      	ld r19, Y+
+000473 0703                      	cpc mpr, r19
+000474 910d                      	ld mpr, X+
+000475 9139                      	ld r19, Y+
+000476 0703                      	cpc mpr, r19
+000477 910d                      	ld mpr, X+
+000478 9139                      	ld r19, Y+
+000479 0703                      	cpc mpr, r19
+                                 	
+00047a 910d                      	ld mpr, X+
+00047b 9139                      	ld r19, Y+
+00047c 0703                      	cpc mpr, r19
+00047d 910d                      	ld mpr, X+
+00047e 9139                      	ld r19, Y+
+00047f 0703                      	cpc mpr, r19
+000480 910d                      	ld mpr, X+
+000481 9139                      	ld r19, Y+
+000482 0703                      	cpc mpr, r19
+000483 910d                      	ld mpr, X+
+000484 9139                      	ld r19, Y+
+000485 0703                      	cpc mpr, r19
+                                 
+                                 	;carry flag cleared means that the result is larger than the divisor
+                                 
+000486 913f                      	pop r19
+000487 910f                      	pop mpr
+000488 91ef                      	pop ZL
+000489 91ff                      	pop ZH
+00048a 91cf                      	pop YL
+00048b 91df                      	pop YH
+00048c 91af                      	pop XL
+00048d 91bf                      	pop XH
+00048e 9508                      	ret
+                                 
+                                 ;
+                                 ; sqrt_64
+                                 ; Gets squared root for a 64-bit number
+                                 ;
+                                 sqrt_64:
+00048f 930f                      	push mpr
+000490 932f                      	push r18
+000491 931f                      	push r17
+                                 
+000492 2700                      	clr mpr
+000493 2722                      	clr r18
+000494 2711                      	clr r17
+                                 
+000495 e0b2                      	ldi XH, high(MUL24_Result)
+000496 e8a0                      	ldi XL, low(MUL24_Result)
+000497 930d                      	st X+, mpr
+000498 930d                      	st X+, mpr
+000499 930d                      	st X+, mpr
+00049a 930d                      	st X+, mpr
+00049b 930d                      	st X+, mpr
+00049c 930d                      	st X+, mpr
+                                 
+                                 	sqrt_64_BEG:
+                                 	;increment 24-bit number
+00049d 940e 04d7                 	call INC_24_sqrt_64
+                                 
+00049f e0b2                      	ldi XH, high(MUL24_OP2)
+0004a0 e7a3                      	ldi XL, low(MUL24_OP2)
+0004a1 e0d2                      	ldi YH, high(MUL24_OP1)
+0004a2 e7c0                      	ldi YL, low(MUL24_OP1)
+0004a3 e0f3                      	ldi ZH, high(SQRT_64_CNT)
+0004a4 efe0                      	ldi ZL, low(SQRT_64_CNT)
+0004a5 940e 0210                 	call clear_ops_32
+                                 
+0004a7 9101                      	ld mpr, Z+
+0004a8 9309                      	st Y+, mpr
+0004a9 930d                      	st X+, mpr
+0004aa 9101                      	ld mpr, Z+
+0004ab 9309                      	st Y+, mpr
+0004ac 930d                      	st X+, mpr
+0004ad 9101                      	ld mpr, Z+
+0004ae 9309                      	st Y+, mpr
+0004af 930d                      	st X+, mpr
+                                 
+0004b0 930f                      	push mpr
+0004b1 e0f2                      	ldi ZH, high(MUL24_Result)
+0004b2 e8e0                      	ldi ZL, low(MUL24_Result)
+0004b3 2700                      	clr mpr
+0004b4 9301                      	st Z+, mpr
+0004b5 9301                      	st Z+, mpr
+0004b6 9301                      	st Z+, mpr
+0004b7 9301                      	st Z+, mpr
+0004b8 9301                      	st Z+, mpr
+0004b9 9301                      	st Z+, mpr
+0004ba 910f                      	pop mpr
+                                 
+                                 	;square the number
+0004bb 940e 02c0                 	call MUL24
+                                 	
+                                 	;compare with value from previous result
+                                 	;check if X is less than Y
+0004bd e0b2                      	ldi XH, high(MUL24_Result)
+0004be e8a0                      	ldi XL, low(MUL24_Result)
+0004bf e0d2                      	ldi YH, high(SQRT_64_VAL)
+0004c0 e6c0                      	ldi YL, low(SQRT_64_VAL)
+                                 	
+                                 	;	Checks if the value in X is less than the value in Y (32-bits)
+                                 	;	It will set the carry flag if X is less than Y, o.w. cleared
+0004c1 940e 0466                 	call COMPARE_64
+0004c3 f2c8                      	brcs sqrt_64_BEG
+                                 
+                                 	;here the count is one too large, subtract 1 from count
+0004c4 e0b3                      	ldi XH, high(SQRT_64_CNT)
+0004c5 efa0                      	ldi XL, low(SQRT_64_CNT)
+                                 
+0004c6 e0fe                      	ldi ZH, high(Period)
+0004c7 e0ec                      	ldi ZL, low(Period)
+                                 	
+0004c8 911d                      	ld r17, X+	; Load (X) to R17
+0004c9 e021                      	ldi r18, 1
+0004ca 1b12                      	sub R17,R18 ; Rsubtract
+0004cb 9311                      	st Z+, R17	; store result to (Z)
+                                 
+0004cc 911d                      	ld r17, X+	; Load (X) to R17
+0004cd 2722                      	clr r18
+0004ce 0b12                      	sbc R17,R18 ; Rsubtract
+0004cf 9311                      	st Z+, R17	; store result to (Z)
+                                 
+0004d0 911d                      	ld r17, X+	; Load (X) to R17
+0004d1 0b12                      	sbc R17,R18 ; Rsubtract
+0004d2 9311                      	st Z+, R17	; store result to (Z)
+                                 	sqrt_64_END:
+                                 
+0004d3 911f                      	pop r17
+0004d4 912f                      	pop r18
+0004d5 910f                      	pop mpr
+0004d6 9508                      	RET
+                                 
+                                 ;
+                                 ; INC_24_sqrt_64
+                                 ; Increses 24-bit count for 64-bit squared root
+                                 ;
+                                 INC_24_sqrt_64:
+0004d7 930f                      	push mpr
+0004d8 933f                      	push r19
+                                 	
+0004d9 e0b3                      	ldi XH, high(SQRT_64_CNT)
+0004da efa0                      	ldi XL, low(SQRT_64_CNT)
+0004db e031                      	ldi r19, 1
+                                 
+0004dc 910c                      	ld mpr, X
+0004dd 0f03                      	add mpr, r19
+0004de 930d                      	st X+, mpr
+0004df 2733                      	clr r19
+                                 
+0004e0 910c                      	ld mpr, X
+0004e1 1f03                      	adc mpr, r19
+0004e2 930d                      	st X+, mpr
+                                 	
+0004e3 910c                      	ld mpr, X
+0004e4 1f03                      	adc mpr, r19
+0004e5 930d                      	st X+, mpr
+                                 
+0004e6 913f                      	pop r19
+0004e7 910f                      	pop mpr
+0004e8 9508                      	ret
+                                 
+                                 ;***********************************************************
+                                 ;*	Custom stored data
+                                 ;*	(feel free to edit these or add others)
+                                 ;***********************************************************
+0004e9 03e9                      MINGM:	.DB 0xE9, 0x03
+0004ea 03e8                      MINRAD:	.DB 0xE8, 0x03
+0004eb 0019                      MINPER:	.DB	0x19, 0x00
+                                 
+                                 
+                                 
+                                 ;***end of your code***end of your code***end of your code***end of your code***end of your code***
+                                 ;*************************** Do not change anything below this point*******************************
+                                 ;*************************** Do not change anything below this point*******************************
+                                 ;*************************** Do not change anything below this point*******************************
+                                 
+                                 Grading:
+0004ec 0000                      		nop					; Check the results in data memory begining at address $0E00 (The TA will set a breakpoint here)
+0004ed cffe                      rjmp Grading
+                                 
+                                 
+                                 ;***********************************************************
+                                 ;*	Stored program data that you cannot change
+                                 ;***********************************************************
+                                 
+                                 ; Contents of program memory will be changed during testing
+                                 ; The label names (OrbitalRadius, SelectedPlanet, PlanetInfo, MercuryGM, etc) are not changed
+                                 ; NOTE: All values are provided using the little-endian convention.
+0004ee 1964                      OrbitalRadius:	.DB	0x64, 0x19				; the radius that should be used during computations (in kilometers)
+                                 											; in this example, the value is 6,500 kilometers
+                                 											; the radius will be provided as a 16 bit unsigned value (unless you are
+                                 											; completing the extra credit, in which case the radius is an unsigned 24 bit value)
+                                 
+0004ef 0002                      SelectedPlanet:	.DB	0x02, 0x00				; This is how your program knows which GM value should be used.
+                                 											; SelectedPlanet is an unsigned 8 bit value that provides you with the
+                                 											; index of the planet (and hence, tells you which GM value to use).
+                                 											; Note: only the first byte is used. The second byte is just for padding.
+                                 											; In this example, the value is 2. If we check the planet at index 2, (from the data below)
+                                 											; that corresponds to Earth.
+                                 											; if the value was 7, that would correspond to the planet Neptune
+                                 
+                                 PlanetInfo:									; Note that these values will be changed during testing!
+0004f0 560e
+0004f1 0000                      MercuryGM:		.DB	0x0E, 0x56, 0x00, 0x00	; Gravitational parameters will be provided as unsigned 32 bit integers (little-endian)
+0004f2 f524
+0004f3 0004                      VenusGM:		.DB	0x24, 0xF5, 0x04, 0x00	; the units are in: (km * km * km)/(sec * sec)
+0004f4 1508
+0004f5 0006                      EarthGM:		.DB	0x08, 0x15, 0x06, 0x00	; <-- note that this is 398,600
+0004f6 a74e
+0004f7 0000                      MarsGM:			.DB	0x4E, 0xA7, 0x00, 0x00
+0004f8 1330
+0004f9 078d                      JupiterGM:		.DB	0x30, 0x13, 0x8D, 0x07	; A word of advice... treat these like an array, where each element
+0004fa c7f8
+0004fb 0242                      SaturnGM:		.DB	0xF8, 0xC7, 0x42, 0x02	; occupies 4 bytes of memory.
+0004fc 68d0
+0004fd 0058                      UranusGM:		.DB	0xD0, 0x68, 0x58, 0x00	; Mercury is at index 0, Venus is at index 1, ...and the final planet is at index 8.
+0004fe 4b38
+0004ff 0068                      NeptuneGM:		.DB	0x38, 0x4B, 0x68, 0x00
+000500 ffff
+000501 ffff                      FinalGM:		.DB	0xFF, 0xFF, 0xFF, 0xFF
+                                 
+                                 
+                                 ;***********************************************************
+                                 ;*	Data Memory Allocation for Results
+                                 ;*	Your answers need to be stored into these locations (using little-endian representation)
+                                 ;*	These exact variable names will be used when testing your code!
+                                 ;***********************************************************
+                                 .dseg
+                                 .org	$0E00						; data memory allocation for results - Your grader only checks $0E00 - $0E14
+000e00                           Quotient:		.byte 3				; This is the intermediate value that is generated while you are computing the satellite's velocity.
+                                 									; It is a 24 bit unsigned value.
+000e03                           Velocity:		.byte 2				; This is where you will store the computed velocity. It is a 16 bit signed number.
+                                 									; The velocity value is normally positive, but it can also be -1 or -2 in case of error
+                                 									; (see "Special Cases" in the assignment documentation).
+000e05                           Product:		.byte 7				; This is the intermediate product that is generated while you are computing the orbital period.
+000e0c                           Period:			.byte 3				; This is where the orbital period of the satellite will be placed.
+                                 									; It is a 24 bit signed value.
+                                 									; The period value is normally positive, but it can also be -1 or -2 in case of error
+                                 									; (see "Special Cases" in the assignment documentation).
+                                 
+                                 ;***********************************************************
+                                 ;*	Additional Program Includes
+                                 ;***********************************************************
+                                 ; There are no additional file includes for this program
+
+
+RESOURCE USE INFORMATION
+------------------------
+
+Notice:
+The register and instruction counts are symbol table hit counts,
+and hence implicitly used resources are not counted, eg, the
+'lpm' instruction without operands implicitly uses r0 and z,
+none of which are counted.
+
+x,y,z are separate entities in the symbol table and are
+counted separately from r26..r31 here.
+
+.dseg memory usage only counts static data declared with .byte
+
+"ATmega128" register use summary:
+x  : 203 y  :  72 z  :  76 r0 :  26 r1 :  26 r2 :  14 r3 :  41 r4 :  25 
+r5 :   7 r6 :   7 r7 :   7 r8 :  22 r9 :  20 r10:  20 r11:  20 r12:  10 
+r13:  10 r14:  10 r15:  10 r16: 326 r17:  52 r18:  39 r19:  78 r20:   8 
+r21:  42 r22:  10 r23:  39 r24:   0 r25:   0 r26:  72 r27:  72 r28:  51 
+r29:  51 r30:  39 r31:  39 
+Registers used: 33 out of 35 (94.3%)
+
+"ATmega128" instruction use summary:
+.lds  :   0 .sts  :   0 adc   :  41 add   :  11 adiw  :   7 and   :   0 
+andi  :   0 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
+brcc  :   6 brcs  :   6 break :   0 breq  :   5 brge  :   0 brhc  :   0 
+brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
+brne  :   6 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
+brvs  :   0 bset  :   0 bst   :   0 call  :  23 cbi   :   0 cbr   :   0 
+clc   :   2 clh   :   0 cli   :   0 cln   :   0 clr   :  87 cls   :   0 
+clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   4 cpc   :  13 
+cpi   :   1 cpse  :   0 dec   :   9 elpm  :   0 eor   :   0 fmul  :   0 
+fmuls :   0 fmulsu:   0 icall :   0 ijmp  :   0 in    :   0 inc   :   0 
+jmp   :   7 ld    : 155 ldd   :   0 ldi   : 218 lds   :   0 lpm   :  14 
+lsl   :   0 lsr   :   2 mov   :  12 movw  :   0 mul   :   3 muls  :   0 
+mulsu :   0 neg   :   0 nop   :   1 or    :   0 ori   :   0 out   :   2 
+pop   : 135 push  : 135 rcall :   0 ret   :  14 reti  :   0 rjmp  :   7 
+rol   :  24 ror   :   4 sbc   :  14 sbci  :   0 sbi   :   0 sbic  :   0 
+sbis  :   0 sbiw  :   3 sbr   :   0 sbrc  :   0 sbrs  :   0 sec   :   2 
+seh   :   0 sei   :   0 sen   :   0 ser   :   0 ses   :   0 set   :   0 
+sev   :   0 sez   :   0 sleep :   0 spm   :   0 st    : 182 std   :   0 
+sts   :   0 sub   :   6 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
+
+Instructions used: 34 out of 114 (29.8%)
+
+"ATmega128" memory use summary [bytes]:
+Segment   Begin    End      Code   Data   Used    Size   Use%
+---------------------------------------------------------------
+[.cseg] 0x000000 0x000a04   2380     46   2426  131072   1.9%
+[.dseg] 0x000100 0x000e0f      0    138    138    4096   3.4%
+[.eseg] 0x000000 0x000000      0      0      0    4096   0.0%
+
+Assembly complete, 0 errors, 0 warnings
